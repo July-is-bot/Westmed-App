@@ -53,128 +53,151 @@ let allSpecialties = ["not defined", "cardiology", "dermatology", "endocrinology
 let allLocations = ["not defined", "rye", "whiteplains", "purchase", "yonkersbt", "yonkersrh", "newrochelle"];*/
 
 //Internal Medicine
-let agastinMichael = provider.makeProvider("Agastin", "Michael", allLocations[6], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 5821", false, allAgeGroups[1]);
-let alyseChase = provider.makeProvider("Alyse", "Chase", allLocations[3], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 831 2901", true, allAgeGroups[1]);
-let angelaShao = provider.makeProvider("Angela", "Shao", allLocations[6], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 5821", false, allAgeGroups[1]);
-let anithaXavier = provider.makeProvider("Anitha", "Xavier", allLocations[0], allSpecialties[5], allTitles[1], false, false, departingStatus[0], allInsurances[1], allGenders[1], false, allAgeGroups[1]);
-let arleeneSharpe = provider.makeProvider("Arleene", "Sharpe", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8062", false, allAgeGroups[1]);
+let agastinMichael = provider.makeProvider("Agastin", "Michael", [allLocations[6]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 5821", false, allAgeGroups[1], "Do not send messages to this provider.");
+let alyseChase = provider.makeProvider("Alyse", "Chase", [allLocations[3]], [allSpecialties[5]], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 831 2901", true, allAgeGroups[1]);
+let angelaShao = provider.makeProvider("Angela", "Shao", [allLocations[6]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 5821", false, allAgeGroups[1]);
+let anithaXavier = provider.makeProvider("Anitha", "Xavier", [allLocations[0]], [allSpecialties[5]], allTitles[1], false, false, departingStatus[0], allInsurances[1], allGenders[1], false, allAgeGroups[1]);
+let arleeneSharpe = provider.makeProvider("Arleene", "Sharpe", [allLocations[5]], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8062", false, allAgeGroups[1]);
 let ashleyCardona = provider.makeProvider("Ashley", "Cardona", [allLocations[1], allLocations[2]], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], ["914 848 8700", "914 848 8701"], true, allAgeGroups[1]);
-let aznehanBatirbek = provider.makeProvider("Aznehan", "Batirbek", allLocations[0], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[2], false, allAgeGroups[1]);
-let barbaraYarwoodWishner = provider.makeProvider("Barbara", "Yarwood-Wishner", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8021", false, allAgeGroups[1]);
-let barryFeuer = provider.makeProvider("Barry", "Feuer", allLocations[3], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 4101", false, allAgeGroups[1]);
-let brendaSullivan = provider.makeProvider("Brenda", "Sullivan", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8062", false, allAgeGroups[1]);
-let calvinYau = provider.makeProvider("Calvin", "Yau", allLocations[2], allSpecialties[5], allTitles[1], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
-let carlosTorres = provider.makeProvider("Carlos", "Torres", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", true, allAgeGroups[1]);
-let davidHerzog = provider.makeProvider("David", "Herzog", allLocations[1], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", false, allAgeGroups[1]);
-let dianaArevalo = provider.makeProvider("Diana", "Arevalo", allLocations[6], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 5821", true, allAgeGroups[1]);
-let eliotMoshman = provider.makeProvider("Eliot", "Moshman", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
-let emilyLorch = provider.makeProvider("Emily", "Lorch", allLocations[4], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8571", false, allAgeGroups[1]);
-let ianYarett = provider.makeProvider("Ian", "yarett", allLocations[1], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", false, allAgeGroups[1]);
-let ireneJong = provider.makeProvider("Irene", "Jong", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8061", false, allAgeGroups[1]);
-let irisSherman = provider.makeProvider("iris", "sherman", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 4761", false, allAgeGroups[1]);
-let jamesSamuel = provider.makeProvider("james", "Samuel", allLocations[0], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "203 845 4873", false, allAgeGroups[1]);
-let jaronSchaumberg = provider.makeProvider("Jaron", "Schaumberg", allLocations[5], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8061", false, allAgeGroups[1]);
-let jeniferJohnson = provider.makeProvider("Jenifer", "Johnson", allLocations[1], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8749", false, allAgeGroups[1]);
-let jerryCampanella = provider.makeProvider("Jerry", "Campanella", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8061", false, allAgeGroups[1]);
-let jillOstrager = provider.makeProvider("Jill", "Ostrager", allLocations[6], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 5821", false, allAgeGroups[1]);
-let jonathanRie = provider.makeProvider("Jonathan", "Rie", allLocations[3], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 2901", false, allAgeGroups[1]);
-let jordanGolubcowteglasi = provider.makeProvider("Jordan", "Golubcow-Teglasi", allLocations[2], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", true, allAgeGroups[1]);
-let kaylaAngelo = provider.makeProvider("Kayla", "Angelo", allLocations[0], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], false, allAgeGroups[1]);
-let lawrenceKraftowitz = provider.makeProvider("Lawrence", "Kraftowitz", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
-let loriSaltzmanGabelman = provider.makeProvider("Lori", "Saltzman-Gabelman", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
-let mandiraGharekhan = provider.makeProvider("Mandira", "Gharekhan", allLocations[1], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8701", false, allAgeGroups[1]);
-let margaretDaly = provider.makeProvider("Margaret", "Daly", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 4771", false, allAgeGroups[1]);
-let maryfrancesKokoska = provider.makeProvider("MaryFrances", "Kokoska", allLocations[0], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "203 845 4873", false, allAgeGroups[1]);
-let michaelContillo = provider.makeProvider("Michael", "Contillo", [allLocations[5], allLocations[3]], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 697 4761", true, allAgeGroups[1]);
-let michelleTyler = provider.makeProvider("Michelle", "Tyler", allLocations[5], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8061", false, allAgeGroups[1]);
-let mohsinQadri = provider.makeProvider("Mohsin", "Qadri", allLocations[1], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", true, allAgeGroups[1]);
-let monaZafar = provider.makeProvider("Monaa", "Zafar", allLocations[3], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 831 2901", false, allAgeGroups[1]);
-let nabeelAli = provider.makeProvider("Nabeel", "Ali", allLocations[3], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 2901", false, allAgeGroups[1]);
-let nicholasPantaleo = provider.makeProvider("Nicholas", "Pantaleo", allLocations[4], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8571", false, allAgeGroups[1]);
-let nicoleHadi = provider.makeProvider("Nicole", "Hadi", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8021", false, allAgeGroups[1]);
-let paulBasch = provider.makeProvider("Paul", "Basch", allLocations[2], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
-let prestonLurie = provider.makeProvider("Preston", "Lurie", allLocations[3], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 4101", false, allAgeGroups[1]);
-let radhikaBali = provider.makeProvider("Radhika", "Bali", allLocations[5], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8061", true, allAgeGroups[1]);
-let rajenMehta = provider.makeProvider("Rajen", "Bali", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
-let richardHuntley = provider.makeProvider("Richard", "Huntley", allLocations[0], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "203 845 4861", false, allAgeGroups[1]);
-let robertoCalderon = provider.makeProvider("Roberto", "Calderon", allLocations[6], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 5821", true, allAgeGroups[1]);
-let ronaldDennett = provider.makeProvider("Ronald", "Dennett", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 4771", false, allAgeGroups[1]);
-let rupalChhabra = provider.makeProvider("Rupal", "Chhabra", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
-let ruthSanchez = provider.makeProvider("Ruth", "Sanchez", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", true, allAgeGroups[1]);
-let samNatarajan = provider.makeProvider("Sam", "Natarajan", [allLocations[3], allLocations[2]], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 683 6780", false, allAgeGroups[1]);
-let sandyGeorge = provider.makeProvider("Sandy", "George", allLocations[1], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8701", false, allAgeGroups[1]);
-let shamsifani = provider.makeProvider("Shamsi", "Fani", allLocations[0], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "0000", true, allAgeGroups[1]);
-let sharonGannot = provider.makeProvider("Sharon", "Gannot", [allLocations[0], allLocations[1]], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "203 210 2821", false, allAgeGroups[1]);
-let shellaSteinberg = provider.makeProvider("Shella", "Steinberg", allLocations[4], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8571", false, allAgeGroups[1]);
-let shinePhilip = provider.makeProvider("Shine", "Philip", allLocations[1], allSpecialties[5], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8751", false, allAgeGroups[1]);
-let shiraMarder = provider.makeProvider("Shira", "Marder", allLocations[2], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
-let steveDiCairano = provider.makeProvider("Steve", "DiCairano", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 4761", false, allAgeGroups[1]);
-let stevenKubersky = provider.makeProvider("Steven", "Kubersky", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 4771", false, allAgeGroups[1]);
-let susanHaas = provider.makeProvider("Susan", "Haas", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
-let toddFriend = provider.makeProvider("Todd", "Friend", allLocations[2], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
-let tuvanaBain = provider.makeProvider("Tuvana", "Bain", allLocations[5], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8061", false, allAgeGroups[1]);
-let waqasSalam = provider.makeProvider("Waqas", "Salam", allLocations[0], allSpecialties[5], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "203 845 4873", false, allAgeGroups[1]);
-let williamMartimucci = provider.makeProvider("William", "Martimucci", allLocations[1], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", false, allAgeGroups[1]);
-let noaMicellota = provider.makeProvider("Noa", "Micellota", allLocations[1], allSpecialties[5], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1]);
+let aznehanBatirbek = provider.makeProvider("Aznehan", "Batirbek", [allLocations[0]], [allSpecialties[5]], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[2], false, allAgeGroups[1]);
+let barbaraYarwoodWishner = provider.makeProvider("Barbara", "Yarwood-Wishner", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8021", false, allAgeGroups[1]);
+let barryFeuer = provider.makeProvider("Barry", "Feuer", [allLocations[3]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 4101", false, allAgeGroups[1]);
+let brendaSullivan = provider.makeProvider("Brenda", "Sullivan", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8062", false, allAgeGroups[1]);
+let calvinYau = provider.makeProvider("Calvin", "Yau", [allLocations[2]], [allSpecialties[5]], allTitles[1], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
+let carlosTorres = provider.makeProvider("Carlos", "Torres", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", true, allAgeGroups[1]);
+let davidHerzog = provider.makeProvider("David", "Herzog", [allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", false, allAgeGroups[1]);
+let dianaArevalo = provider.makeProvider("Diana", "Arevalo", [allLocations[6]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 5821", true, allAgeGroups[1]);
+let eliotMoshman = provider.makeProvider("Eliot", "Moshman", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
+let emilyLorch = provider.makeProvider("Emily", "Lorch", [allLocations[4]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8571", false, allAgeGroups[1]);
+let ianYarett = provider.makeProvider("Ian", "yarett", [allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", false, allAgeGroups[1]);
+let ireneJong = provider.makeProvider("Irene", "Jong", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8061", false, allAgeGroups[1]);
+let irisSherman = provider.makeProvider("iris", "sherman", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 4761", false, allAgeGroups[1]);
+let jamesSamuel = provider.makeProvider("james", "Samuel", [allLocations[0]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "203 845 4873", false, allAgeGroups[1]);
+let jaronSchaumberg = provider.makeProvider("Jaron", "Schaumberg", [allLocations[5]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8061", false, allAgeGroups[1]);
+let jeniferJohnson = provider.makeProvider("Jenifer", "Johnson", [allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8749", false, allAgeGroups[1]);
+let jerryCampanella = provider.makeProvider("Jerry", "Campanella", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8061", false, allAgeGroups[1]);
+let jillOstrager = provider.makeProvider("Jill", "Ostrager", [allLocations[6]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 5821", false, allAgeGroups[1]);
+let jonathanRie = provider.makeProvider("Jonathan", "Rie", [allLocations[3]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 2901", false, allAgeGroups[1]);
+let jordanGolubcowteglasi = provider.makeProvider("Jordan", "Golubcow-Teglasi", [allLocations[2]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", true, allAgeGroups[1]);
+let kaylaAngelo = provider.makeProvider("Kayla", "Angelo", [allLocations[0]], [allSpecialties[5]], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], false, allAgeGroups[1]);
+let lawrenceKraftowitz = provider.makeProvider("Lawrence", "Kraftowitz", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
+let loriSaltzmanGabelman = provider.makeProvider("Lori", "Saltzman-Gabelman", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
+let mandiraGharekhan = provider.makeProvider("Mandira", "Gharekhan", [allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8701", false, allAgeGroups[1]);
+let margaretDaly = provider.makeProvider("Margaret", "Daly", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 607 4771", false, allAgeGroups[1]);
+let maryfrancesKokoska = provider.makeProvider("MaryFrances", "Kokoska", [allLocations[0]], [allSpecialties[5]], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "203 845 4873", false, allAgeGroups[1]);
+let michaelContillo = provider.makeProvider("Michael", "Contillo", [allLocations[5], [allLocations[3]]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 697 4761", true, allAgeGroups[1]);
+let michelleTyler = provider.makeProvider("Michelle", "Tyler", [allLocations[5]], [allSpecialties[5]], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8061", false, allAgeGroups[1]);
+let mohsinQadri = provider.makeProvider("Mohsin", "Qadri", [allLocations[1]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", true, allAgeGroups[1]);
+let monaZafar = provider.makeProvider("Monaa", "Zafar", [allLocations[3]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 831 2901", false, allAgeGroups[1]);
+let nabeelAli = provider.makeProvider("Nabeel", "Ali", [allLocations[3]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 2901", false, allAgeGroups[1]);
+let nicholasPantaleo = provider.makeProvider("Nicholas", "Pantaleo", [allLocations[4]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8571", false, allAgeGroups[1]);
+let nicoleHadi = provider.makeProvider("Nicole", "Hadi", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8021", false, allAgeGroups[1]);
+let paulBasch = provider.makeProvider("Paul", "Basch", [allLocations[2]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
+let prestonLurie = provider.makeProvider("Preston", "Lurie", [allLocations[3]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 831 4101", false, allAgeGroups[1]);
+let radhikaBali = provider.makeProvider("Radhika", "Bali", [allLocations[5]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8061", true, allAgeGroups[1]);
+let rajenMehta = provider.makeProvider("Rajen", "Bali", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
+let richardHuntley = provider.makeProvider("Richard", "Huntley", [allLocations[0]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "203 845 4861", false, allAgeGroups[1]);
+let robertoCalderon = provider.makeProvider("Roberto", "Calderon", [allLocations[6]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 5821", true, allAgeGroups[1]);
+let ronaldDennett = provider.makeProvider("Ronald", "Dennett", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 4771", false, allAgeGroups[1]);
+let rupalChhabra = provider.makeProvider("Rupal", "Chhabra", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
+let ruthSanchez = provider.makeProvider("Ruth", "Sanchez", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", true, allAgeGroups[1]);
+let samNatarajan = provider.makeProvider("Sam", "Natarajan", [allLocations[3], allLocations[2]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "914 683 6780", false, allAgeGroups[1]);
+let sandyGeorge = provider.makeProvider("Sandy", "George", [allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8701", false, allAgeGroups[1]);
+let shamsifani = provider.makeProvider("Shamsi", "Fani", [allLocations[0]], [allSpecialties[5]], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "0000", true, allAgeGroups[1]);
+let sharonGannot = provider.makeProvider("Sharon", "Gannot", [allLocations[0], allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "203 210 2821", false, allAgeGroups[1]);
+let shellaSteinberg = provider.makeProvider("Shella", "Steinberg", [allLocations[4]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8571", false, allAgeGroups[1]);
+let shinePhilip = provider.makeProvider("Shine", "Philip", [allLocations[1]], [allSpecialties[5]], allTitles[1], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8751", false, allAgeGroups[1]);
+let shiraMarder = provider.makeProvider("Shira", "Marder", [allLocations[2]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
+let steveDiCairano = provider.makeProvider("Steve", "DiCairano", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 4761", false, allAgeGroups[1]);
+let stevenKubersky = provider.makeProvider("Steven", "Kubersky", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 607 4771", false, allAgeGroups[1]);
+let susanHaas = provider.makeProvider("Susan", "Haas", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 681 5260", false, allAgeGroups[1]);
+let toddFriend = provider.makeProvider("Todd", "Friend", [allLocations[2]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 681 5260", false, allAgeGroups[1]);
+let tuvanaBain = provider.makeProvider("Tuvana", "Bain", [allLocations[5]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1], "914 848 8061", false, allAgeGroups[1]);
+let waqasSalam = provider.makeProvider("Waqas", "Salam", [allLocations[0]], [allSpecialties[5]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[2], "203 845 4873", false, allAgeGroups[1]);
+let williamMartimucci = provider.makeProvider("William", "Martimucci", [allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[2], "914 848 8701", false, allAgeGroups[1]);
+let noaMicellota = provider.makeProvider("Noa", "Micellota", [allLocations[1]], [allSpecialties[5]], allTitles[2], false, false, departingStatus[0], allInsurances[1], allGenders[1]);
 // Gastroenterology
-let alissaMark = provider.makeProvider("Alissa", "Mark", allLocations[3], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
-let andrewFrancella = provider.makeProvider("Andrew", "Francella", allLocations[3], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
-let charlesKoczka = provider.makeProvider("Charles", "Koczka", allLocations[5], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", false, allAgeGroups[1]);
-let davidDiCaprio = provider.makeProvider("David", "DiCaprio", allLocations[5], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", false, allAgeGroups[1]);
-let emilyArduino = provider.makeProvider("Emily", "Arduino", allLocations[3], allSpecialties[4], allTitles[3], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
-let erikaTubridy = provider.makeProvider("Erika", "Tubridy", [allLocations[1],allLocations[3]], allSpecialties[4], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
-let hashemHashem = provider.makeProvider("Hashem", "Hashem", allLocations[3], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
-let henryChiu = provider.makeProvider("Henry", "Chiu", allLocations[5], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", true, allAgeGroups[1]);
-let jaredMacklin = provider.makeProvider("Jared", "Macklin", allLocations[3], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
-let jonathanFinegold = provider.makeProvider("Jonathan", "Finegold", allLocations[5], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", false, allAgeGroups[1]);
-let katiGlockenberg = provider.makeProvider("Kati", "Glockenberg", allLocations[3], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
-let kavyaVanchipurakal = provider.makeProvider("Kavya", "Vanchipurakal", allLocations[5], allSpecialties[4], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 6821", false, allAgeGroups[1]);
-let mitchellAuerbach = provider.makeProvider("Mitchell", "Auerbach", [allLocations[1], allLocations[5]], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 681 5222", "914 831 6821"], false, allAgeGroups[1]);
-let richardFazio = provider.makeProvider("Richard", "Fazio", allLocations[3], allSpecialties[4], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
+let alissaMark = provider.makeProvider("Alissa", "Mark", [allLocations[3]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
+let andrewFrancella = provider.makeProvider("Andrew", "Francella", [allLocations[3]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
+let charlesKoczka = provider.makeProvider("Charles", "Koczka", [allLocations[5]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", false, allAgeGroups[1]);
+let davidDiCaprio = provider.makeProvider("David", "DiCaprio", [allLocations[5]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", false, allAgeGroups[1]);
+let emilyArduino = provider.makeProvider("Emily", "Arduino", [allLocations[3]], [allSpecialties[4]], allTitles[3], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
+let erikaTubridy = provider.makeProvider("Erika", "Tubridy", [allLocations[1],allLocations[3]], [allSpecialties[4]], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
+let hashemHashem = provider.makeProvider("Hashem", "Hashem", [allLocations[3]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
+let henryChiu = provider.makeProvider("Henry", "Chiu", [allLocations[5]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", true, allAgeGroups[1]);
+let jaredMacklin = provider.makeProvider("Jared", "Macklin", [allLocations[3]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
+let jonathanFinegold = provider.makeProvider("Jonathan", "Finegold", [allLocations[5]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 6821", false, allAgeGroups[1]);
+let katiGlockenberg = provider.makeProvider("Kati", "Glockenberg", [allLocations[3]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5222", false, allAgeGroups[1]);
+let kavyaVanchipurakal = provider.makeProvider("Kavya", "Vanchipurakal", [allLocations[5]], [allSpecialties[4]], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 6821", false, allAgeGroups[1]);
+let mitchellAuerbach = provider.makeProvider("Mitchell", "Auerbach", [allLocations[1], allLocations[5]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 681 5222", "914 831 6821"], false, allAgeGroups[1]);
+let richardFazio = provider.makeProvider("Richard", "Fazio", [allLocations[3]], [allSpecialties[4]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5222", false, allAgeGroups[1]);
 //Allergy
-let aviDeener = provider.makeProvider("Avi", "Deener", [allLocations[1], allLocations[2]], allSpecialties[15], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5231", false, allAgeGroups[1]);
-let cyrusNozad = provider.makeProvider("Cyrus", "Nozad", allLocations[3], allSpecialties[15], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 848 8631", false, allAgeGroups[1]);
-let joshuaGrossman = provider.makeProvider("Joshua", "Grossman", [allLocations[3], allLocations[4]], allSpecialties[15], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 848 8631", false, allAgeGroups[1]);
-let lauraMechanic = provider.makeProvider("Laura", "Mechanic", allLocations[5], allSpecialties[15], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 848 8081", false, allAgeGroups[1]);
+let aviDeener = provider.makeProvider("Avi", "Deener", [allLocations[1], allLocations[2]], [allSpecialties[15]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5231", false, allAgeGroups[1]);
+let cyrusNozad = provider.makeProvider("Cyrus", "Nozad", [allLocations[3]], [allSpecialties[15]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 848 8631", false, allAgeGroups[1]);
+let joshuaGrossman = provider.makeProvider("Joshua", "Grossman", [allLocations[3], allLocations[4]], [allSpecialties[15]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 848 8631", false, allAgeGroups[1]);
+let lauraMechanic = provider.makeProvider("Laura", "Mechanic", [allLocations[5]], [allSpecialties[15]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 848 8081", false, allAgeGroups[1]);
 // Bariatric Surgery
-let anthonyMaffei = provider.makeProvider("Anthony", "Maffei", allLocations[3], [allSpecialties[13], allSpecialties[16]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "833 418 2505", false, allAgeGroups[1]);
-let ashutoshKaul = provider.makeProvider("Ashutosh", "Kaul", allLocations[3], [allSpecialties[13], allSpecialties[16]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "833 418 2505", false, allAgeGroups[1]);
-let jonathanGiannone = provider.makeProvider("Jonathan", "Giannone", allLocations[3], [allSpecialties[13], allSpecialties[16]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "833 418 2505", false, allAgeGroups[1]);
+let anthonyMaffei = provider.makeProvider("Anthony", "Maffei", [allLocations[3]], [allSpecialties[13], allSpecialties[16]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "833 418 2505", false, allAgeGroups[1]);
+let ashutoshKaul = provider.makeProvider("Ashutosh", "Kaul", [allLocations[3]], [allSpecialties[13], allSpecialties[16]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "833 418 2505", false, allAgeGroups[1]);
+let jonathanGiannone = provider.makeProvider("Jonathan", "Giannone", [allLocations[3]], [allSpecialties[13], allSpecialties[16]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "833 418 2505", false, allAgeGroups[1]);
 // Chiropractic Medicine
-let stevenKosterich = provider.makeProvider("Steven", "Kosterich", allLocations[0], allSpecialties[14]);
+let stevenKosterich = provider.makeProvider("Steven", "Kosterich", [allLocations[0]], [allSpecialties[14]]);
 // Endocrinology
-let kennethWeiser = provider.makeProvider("Kenneth", "Weiser", allLocations[1], allSpecialties[3], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 4151", false, allAgeGroups[1]);
-let lindaDo = provider.makeProvider("Linda", "Do", allLocations[0], allSpecialties[3], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[1], "", false, allAgeGroups[1]);
-let randyStein = provider.makeProvider("Randy", "Stein", allLocations[0], allSpecialties[3], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "", false, allAgeGroups[1]);
-let rebeccaFenichel = provider.makeProvider("Rebecca", "Fenichel", allLocations[3], allSpecialties[3], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 305 2719", false, allAgeGroups[1]);
-let shellyIm = provider.makeProvider("Shelly", "Im", allLocations[5], allSpecialties[0], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[0], "914 848 8051", false, allAgeGroups[1]);
-let zoraydaPretto = provider.makeProvider("Zorayda", "Pretto", allLocations[2], allSpecialties[3], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4151", false, allAgeGroups[1]);
+let kennethWeiser = provider.makeProvider("Kenneth", "Weiser", [allLocations[1]], [allSpecialties[3]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 831 4151", false, allAgeGroups[1]);
+let lindaDo = provider.makeProvider("Linda", "Do", [allLocations[0]], [allSpecialties[3]], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[1], "", false, allAgeGroups[1]);
+let randyStein = provider.makeProvider("Randy", "Stein", [allLocations[0]], [allSpecialties[3]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "", false, allAgeGroups[1]);
+let rebeccaFenichel = provider.makeProvider("Rebecca", "Fenichel", [allLocations[3]], [allSpecialties[3]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 305 2719", false, allAgeGroups[1]);
+let shellyIm = provider.makeProvider("Shelly", "Im", [allLocations[5]], allSpecialties[0], allTitles[1], true, false, departingStatus[0], allInsurances[0], allGenders[0], "914 848 8051", false, allAgeGroups[1]);
+let zoraydaPretto = provider.makeProvider("Zorayda", "Pretto", [allLocations[2]], [allSpecialties[3]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4151", false, allAgeGroups[1]);
 // Weight Management
-let jamieFeit = provider.makeProvider("Jamie", "Feit", allLocations[3], allSpecialties[13], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4101", false, allAgeGroups[1]);
-let jenniferSchaeffer = provider.makeProvider("Jennifer", "Schaeffer", allLocations[3], allSpecialties[13], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4101", false, allAgeGroups[1]);
-let madhuMathur = provider.makeProvider("Madhu", "Mathur", allLocations[3], allSpecialties[13], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4101", false, allAgeGroups[1]);
+let jamieFeit = provider.makeProvider("Jamie", "Feit", [allLocations[3]], [allSpecialties[13]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4101", false, allAgeGroups[1]);
+let jenniferSchaeffer = provider.makeProvider("Jennifer", "Schaeffer", [allLocations[3]], [allSpecialties[13]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4101", false, allAgeGroups[1]);
+let madhuMathur = provider.makeProvider("Madhu", "Mathur", [allLocations[3]], [allSpecialties[13]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4101", false, allAgeGroups[1]);
 //Nephrology
-let iosifKolbovsky = provider.makeProvider("Iosif", "Kolbovsky", allLocations[0], allSpecialties[6], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "", false, allAgeGroups[1]);
-let marianneMonahan = provider.makeProvider("Marianne", "Monahan", [allLocations[3], allLocations[1], allLocations[7]], allSpecialties[6], allTitles[2], false, false, departingStatus[0], allInsurances[0], allGenders[1], ["914 683 6780", "914 683 6780", "203 210 2801"], false, allAgeGroups[1]);
-let richardGervasi = provider.makeProvider("Richard", "Gervasi", allLocations[0], allSpecialties[6], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "203 845 4861", false, allAgeGroups[1]);
-let shkendieVelia = provider.makeProvider("Shkendie", "Velia", [allLocations[3], allLocations[5]], allSpecialties[6], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 305 2719", false, allAgeGroups[1]);
+let iosifKolbovsky = provider.makeProvider("Iosif", "Kolbovsky", [allLocations[0]], [allSpecialties[6]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "", false, allAgeGroups[1]);
+let marianneMonahan = provider.makeProvider("Marianne", "Monahan", [allLocations[3], [[allLocations[1]]], allLocations[7]], [allSpecialties[6]], allTitles[2], false, false, departingStatus[0], allInsurances[0], allGenders[1], ["914 683 6780", "914 683 6780", "203 210 2801"], false, allAgeGroups[1]);
+let richardGervasi = provider.makeProvider("Richard", "Gervasi", [allLocations[0]], [allSpecialties[6]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "203 845 4861", false, allAgeGroups[1]);
+let shkendieVelia = provider.makeProvider("Shkendie", "Velia", [allLocations[3], allLocations[5]], [allSpecialties[6]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 305 2719", false, allAgeGroups[1]);
 //Physical Therapy
-let bhatkiPabrekar = provider.makeProvider("Bhatki", "Pabrekar", allLocations[8], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "203 210 2841", false, allAgeGroups[1]);
-let christinaRosado = provider.makeProvider("Christina", "Rosado", [allLocations[8], allLocations[3]], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "203 210 2841", false, allAgeGroups[1]);
-let ericMasbou = provider.makeProvider("Eric", "Masbou", allLocations[8], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "203 210 2841", false, allAgeGroups[1]);
-let guyDisalvo = provider.makeProvider("Guy", "DiSalvo", allLocations[3], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 3115", false, allAgeGroups[1]);
-let jenniferZagarino = provider.makeProvider("Jennifer", "Zagarino", allLocations[8], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "203 210 2841", false, allAgeGroups[1]);
-let jonathanCorti = provider.makeProvider("Jonathan", "Corti", allLocations[0], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "", false, allAgeGroups[1]);
-let kellyChase = provider.makeProvider("Kelly", "Chase", allLocations[3], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 3115", false, allAgeGroups[1]);
-let leonidesCelino = provider.makeProvider("Leonides", "Celino", allLocations[3], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 3115", false, allAgeGroups[1]);
-let nataliyaYatsevich = provider.makeProvider("Nataliya", "Yat", allLocations[0], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "", false, allAgeGroups[1]);
-let patriciaCerbo = provider.makeProvider("Patricia", "Cerbo", allLocations[3], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 3115", false, allAgeGroups[1]);
-let paulRobertson = provider.makeProvider("Paul", "Robertson", allLocations[3], allSpecialties[9], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 3115", false, allAgeGroups[1]);
+let bhatkiPabrekar = provider.makeProvider("Bhatki", "Pabrekar", [allLocations[8]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "203 210 2841", false, allAgeGroups[1]);
+let christinaRosado = provider.makeProvider("Christina", "Rosado", [allLocations[8], allLocations[3]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[1], allGenders[1], "203 210 2841", false, allAgeGroups[1]);
+let ericMasbou = provider.makeProvider("Eric", "Masbou", [allLocations[8]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "203 210 2841", false, allAgeGroups[1]);
+let guyDisalvo = provider.makeProvider("Guy", "DiSalvo", [allLocations[3]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 3115", false, allAgeGroups[1]);
+let jenniferZagarino = provider.makeProvider("Jennifer", "Zagarino", [allLocations[8]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "203 210 2841", false, allAgeGroups[1]);
+let jonathanCorti = provider.makeProvider("Jonathan", "Corti", [allLocations[0]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "", false, allAgeGroups[1]);
+let kellyChase = provider.makeProvider("Kelly", "Chase", [allLocations[3]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 3115", false, allAgeGroups[1]);
+let leonidesCelino = provider.makeProvider("Leonides", "Celino", [allLocations[3]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 3115", false, allAgeGroups[1]);
+let nataliyaYatsevich = provider.makeProvider("Nataliya", "Yat", [allLocations[0]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "", false, allAgeGroups[1]);
+let patriciaCerbo = provider.makeProvider("Patricia", "Cerbo", [allLocations[3]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 3115", false, allAgeGroups[1]);
+let paulRobertson = provider.makeProvider("Paul", "Robertson", [allLocations[3]], [allSpecialties[9]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 3115", false, allAgeGroups[1]);
 //Podiatry
+let haroldGoldStein = provider.makeProvider("Harold", "Goldstein", [allLocations[2], allLocations[1]], [allSpecialties[17]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 681 3115", "914 848 8751"], false, allAgeGroups[1]);
+let ivanHerstik = provider.makeProvider("Ivan", "Herstik", [allLocations[3], allLocations[5]], [allSpecialties[17]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 848 8071", "914 848 8751"], false, allAgeGroups[1]);
+let josephValetta = provider.makeProvider("Joseph", "Valetta", [allLocations[2], allLocations[1]], [allSpecialties[17]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 681 5260", "914 848 8751"], false, allAgeGroups[1]);
+let scottHausen = provider.makeProvider("Scott", "Hausen", [allLocations[4], allLocations[6]], [allSpecialties[17]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 3115", false, allAgeGroups[1]);
 //Pulmonary
+let brunoDiCosmo = provider.makeProvider("Bruno", "DiCosmo", [allLocations[1], allLocations[3]], [allSpecialties[5], allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 848 8778", true, allAgeGroups[1]);
+let emmanuelWurm = provider.makeProvider("Emmanuel", "Wurm", [allLocations[2]], [allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5217", true, allAgeGroups[1]);
+let jamesDoyle = provider.makeProvider("James", "Doyle", [allLocations[1]], [allSpecialties[5], allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 848 8778", false, allAgeGroups[1]);
+let lisaYoukeles = provider.makeProvider("Lisa", "Youkeles", [allLocations[6]], [allSpecialties[5], allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 607 5821", false, allAgeGroups[1]);
+let paulWeinstein = provider.makeProvider("Paul", "Weinstein", [allLocations[5]], [allSpecialties[5], allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 848 8051", true, allAgeGroups[1]);
+let rossMazo = provider.makeProvider("Ross", "Mazo", [allLocations[2]], [allSpecialties[5], allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5217", false, allAgeGroups[1]);
+let samanthaDannunzio = provider.makeProvider("Samantha", "D'Annunzio", [allLocations[1]], [allSpecialties[5], allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 848 8778", false, allAgeGroups[1]);
+let smithaNair = provider.makeProvider("Smitha", "Nair", [allLocations[3]], allSpecialties[10], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 831 4101", false, allAgeGroups[1]);
+let stevenMeixler = provider.makeProvider("Steven", "Meixler", [allLocations[2]], [allSpecialties[5], allSpecialties[10]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], "914 681 5217", true, allAgeGroups[1]);
 //Rheumatology
+let dianaGoldenberg = provider.makeProvider("Diana", "Goldenberg", [allLocations[6]], [allSpecialties[11]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 607 5846", false, allAgeGroups[1]);
+let janeWachs = provider.makeProvider("Jane", "Wachs", [allLocations[5]], [allSpecialties[11]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 848 8051", false, allAgeGroups[1]);
+let mariaDynkin = provider.makeProvider("Maria", "Dynkin", [allLocations[6], allLocations[5]], [allSpecialties[11]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], ["914 607 5846", "914 457 1195"], true, allAgeGroups[1]);
+let svetlanaKrasnokutsky = provider.makeProvider("Svetlana", "Krasnokutsky", [allLocations[3]], [allSpecialties[11]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 607 6280", true, allAgeGroups[1]);
 //Urology
-//Vascular
+let barryKimmel = provider.makeProvider("Barry", "Kimmel", [allLocations[5], allLocations[1], allLocations[3]], [allSpecialties[18]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 848 8778", "914 848 8778", "914 607 6274"], true, allAgeGroups[1]);
+let bryanBlair = provider.makeProvider("Bryan", "Blair", [allLocations[1], allLocations[2], allLocations[5]], [allSpecialties[18]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 681 5264", "914 681 5264", "914 681 5264"], false, allAgeGroups[1]);
+let juddBoczko = provider.makeProvider("Judd", "Boczko", [allLocations[1], allLocations[2], allLocations[6]], [allSpecialties[18]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[2], ["914 681 5264", "914 681 5264", "914 681 5264"], false, allAgeGroups[1]);
+let kellyAnnunziato = provider.makeProvider("Kelly", "Annunziato", [allLocations[2]], [allSpecialties[18]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 681 5264", true, allAgeGroups[1]);
+let nicoleFleischmann = provider.makeProvider("Nicole", "Fleischmann", [allLocations[5], allLocations[3]], [allSpecialties[18]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], ["914 607 6274", "914 607 6274"], false, allAgeGroups[1]);
+let sethLerner = provider.makeProvider("Seth", "Lerner", [allLocations[3]], [allSpecialties[18]], allTitles[2], true, false, departingStatus[0], allInsurances[0], allGenders[1], "914 607 6274", false, allAgeGroups[1]);
+
 
 //let georgePicorelli = provider.makeProvider("George", "Picorelli");
 //let stevenDiCairano = provider.makeProvider("Steven", "DiCairano");
@@ -680,9 +703,29 @@ const displaySearchResults = (results) => {
             // Create a ROW TWO for the header
             const cardHeaderRow2 = document.createElement("div");
             cardHeaderRow2.classList.add("header-row-two");
-            //cardHeaderRow2.style.display = "flex";
             getSpecialtyIcon(provider.specialty).firstChild instanceof Node ? cardHeaderRow2.appendChild(getSpecialtyIcon(provider.specialty)) : cardHeaderRow2.appendChild(internalMedicine);
-            cardHeader.appendChild(cardHeaderRow2);           
+            cardHeader.appendChild(cardHeaderRow2);
+            
+            // Createa ROW THREE for the header
+            const cardHeaderRow3 = document.createElement("div");
+            cardHeaderRow3.classList.add("header-row-three");
+            cardHeader.appendChild(cardHeaderRow3);
+
+            // create a div for each specialty, with a click event listener
+            const specialtyTagArray = [];
+            for (let i = 0; i < provider.specialty.length - 1; i++) {
+              console.log(provider.specialty[i]);
+              console.log(provider.specialty);
+              console.log(typeof provider.specialty);
+              const specialtyTag = document.createElement("div");
+              specialtyTag.classList.add("specialty-tag");
+              const specialtyTagText = document.createElement("p");
+              specialtyTagText.textContent = formatSpecialtyName(provider.specialty[i]);
+              specialtyTag.appendChild(specialtyTagText);
+              cardHeaderRow3.appendChild(specialtyTag);
+              specialtyTagArray.push(specialtyTag);
+            };
+
             
             // Create a paragraph for the provider's specialty
             const providerSpecialty = document.createElement("p");
@@ -868,3 +911,4 @@ const runSearch = (event) => {
   displaySearchResults(filteredProviders);
 };
 //runSearch();
+displaySearchResults(provider.allProviders);
