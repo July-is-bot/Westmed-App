@@ -1,5 +1,10 @@
 :root {
     --main-color: hsl(203, 95%, 23%);
+    --light-main-color: hsl(203, 100%, 75%);
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -17,6 +22,10 @@ header {
 h1 {
     color: white;
     font-size: 2rem;
+}
+
+p {
+    margin: 0;
 }
 
 main {
@@ -54,12 +63,10 @@ form {
 .form-checkbox-wrap {
     width: 100%;
     margin: 0.5rem 0;
-    /*background: red;*/
 }
 
 .form-dropdown-wrap {
     margin: 0.5rem;
-    /* background-color: red; */
 }
 
 button {
@@ -87,6 +94,7 @@ button:hover {
     background-color: #f1f1f1;
     border-radius: 5px;
     padding: 20px;
+    border-bottom: black solid 1px;
 }
 
 .age-group {
@@ -94,24 +102,18 @@ button:hover {
   font-size: 1rem;
 }
 
-.specialty {
-  padding: 0;
-}
 
 .provider-card h2 {
     margin: 0 0 10px;
 }
 
-.provider-card p {
-    margin: 0;
-}
 
 .information-card {
     display: flex;
-    flex-direction: column;
     gap: 1.5rem;
     padding: 1.5rem;
     background-color: #d0d0d0;
+    flex-direction: column;
 }
 
 .location-row {
@@ -124,13 +126,77 @@ button:hover {
     gap: 1.5rem;
 }
 
-.header-row-two {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+.important-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: #f1f1f1;
+    height: 100%;
+    border: 1px solid #ff1e00;
 }
 
-.icon-wrap {
-  margin-right: 0.5rem;
+.card-header {
+    display: flex;
+    flex-direction: column;
 }
+
+.header-row-one {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.header-row-two {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.specialty {
+  padding: 0;
+  display: flex;
+  flex-grow: 1;
+  gap: 0.5rem;
+  border: var(--main-color) 1px solid;
+  border-radius: 8px;
+  align-items: center;
+  background-color: #e0d9d9;
+}
+
+.specialty:hover {
+  cursor: pointer;
+  background: linear-gradient(to top, var(--light-main-color), #d7d7d7 10%);
+}
+
+.header-row-three {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 10px;
+}
+
+.common-symptoms {
+    display: flex;
+    margin: 20px 0;
+    padding: 0.7rem;
+    border: black 1px solid;
+    border-radius: 8px;
+}
+
+.open {
+  display: flex;
+}
+
+.location-information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* align-items: center; */
+}
+.fax-information {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* align-items: center; */
+  }
 
