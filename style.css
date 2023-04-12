@@ -1,17 +1,24 @@
 /* 
-// This is a ist of the class used in the "providerCard" method:
-// provider-card
-// card-header
-// card-header-title-row
-// card-header-provider-title
-// card-header-provider-first-name
-// card-header-provider-last-name
-// badge-icons-section
-// card-header-specialties-row
-// specialty-button
-// specialty-name
-// card-body
-//////////////////////////
+  // This is a ist of the class used in the "providerCard" method:
+  // provider-card
+  // card-header
+  // card-header-title-row
+  // card-header-provider-title
+  // card-header-provider-first-name
+  // card-header-provider-last-name
+  // badge-icons-section
+  // card-header-specialties-row
+  // specialty-button
+  // specialty-name
+  // common-visit-reasons-row
+  // card-body-left-side
+  // card-body-right-side
+  // card-body
+  // location-group
+  // location
+  // fax
+  //////////////////////////
+
 */
 
 :root {
@@ -46,6 +53,7 @@ header {
 h1 {
     color: rgb(0, 0, 0);
     font-size: 2rem;
+    margin: 0;
 }
 
 .page-title {
@@ -125,8 +133,10 @@ button:hover {
     background-color: var(--main-gray);
     border-radius: 5px;
     padding: 20px;
+    padding-top: 0;
     border-bottom: black solid 1px;
     margin-bottom: 50px;
+    box-shadow: var(--main-color) 0px 0px 15px 0px;
 }
 
 
@@ -156,10 +166,17 @@ button:hover {
 
 .card-header-title-row {
     display: flex;
+    flex-wrap: wrap;
     justify-content: flex-start;
     align-items: center;
     gap: 0.6rem;
+    padding: 1rem;
+    padding-left: 0;
+}
 
+.card-header-title-row h1{
+    font-size: 2rem;
+    font-weight: bold;
 }
 
 .card-header-provider-title {
@@ -182,6 +199,10 @@ button:hover {
     flex-direction: row;
     gap: 0.5rem;
     margin-left: auto;
+    background-color: var(--main-gray-light);
+    padding: 0.5rem;
+    border-radius: 50px;
+    border: var(--main-gray-darkest) 2px solid;
 }
 
 .departing-date {
@@ -195,17 +216,19 @@ button:hover {
 .card-header-specialties-row {
     display: flex;
     flex-direction: row;
-    gap: 0.5rem;
+    gap: 1rem;
 }
 
 .specialty-button {
     display: flex;
     flex-grow: 1;
-    background-color: var(--main-gray-darkest);
+    width: 50%;
+    background: linear-gradient(180deg, var(--main-gray-dark) 0%, var(--main-gray-darkest) 100%);
     border: none;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
+    font-weight: bold;
     padding: 5px 10px;
     margin: 0;
     gap: 0.5rem;
@@ -213,7 +236,8 @@ button:hover {
 }
 
 .specialty-name {
-    color: white;
+    flex-wrap: wrap;
+    color: rgb(253, 243, 243);
     font-size: 1rem;
 }
 
@@ -221,16 +245,48 @@ button:hover {
     display: flex;
     flex-direction: row;
     gap: 1.5rem;
-    margin: 1rem;
-    margin-left: 0;
+    margin: 1rem 0;
+}
+
+.gender-icon svg{
+    width: 2rem;
+    height: 2rem;
 }
 
 .location-group {
     display: flex;
     flex-grow: 1;
     flex-direction: column;
+    width: 50%;
     gap: 0.5rem;
     padding: 1rem;
     background-color: var(--main-gray-dark);
+    border: var(--main-color) 1px solid;
 }
+
+
+.common-visit-reasons-row {
+    display: flex;
+    margin-top: 0.8rem;
+    gap: 1rem;
+}
+
+.common-visit-reasons-paragraph {
+    flex: 1;
+    width: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.important-info-row {
+    margin-top: 0.8rem;
+    border: red 1px solid;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    color: orangered;
+    background-color: var(--main-gray-darker)
+}
+
 
