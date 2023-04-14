@@ -70,7 +70,7 @@ class Provider {
     this._office = office || [];
     this._fax = fax || [];
     this._emergencyLine = emergencyLine || [];
-    this._languages = languages || [];
+    this._languages = languages;
     this._insurances = insurances || [];
     this._onLeave = onLeave;
     this._departing = departing;
@@ -158,6 +158,17 @@ class Provider {
   set relevanceScore(score) {
     this._relevanceScore = score;
   }
+
+  getLanguages() {
+    const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+  
+    if (Array.isArray(this._languages)) {
+      return this._languages.map(capitalizeFirstLetter).join(", ");
+    } else {
+      return capitalizeFirstLetter(this._languages);
+    }
+  }
+  
 
   getAddress() {
     const addressMap = {
@@ -340,6 +351,18 @@ class Provider {
     cardHeaderProviderLastName.classList.add("card-header-provider-last-name");
     cardHeaderProviderLastName.textContent = this.lastName;
     cardHeaderTitleRow.appendChild(cardHeaderProviderLastName);
+
+    // Create a div for the provider's languages.
+    let providerLanguage = document.createElement("div");
+    providerLanguage.classList.add("provider-language");
+    providerLanguage.appendChild(languageIcon.icon.cloneNode(true));
+
+    let providerLanguageText = document.createElement("p");
+    providerLanguageText.classList.add("provider-language-text");
+    providerLanguageText.textContent = this.getLanguages();
+
+    providerLanguage.appendChild(providerLanguageText);
+    cardHeaderTitleRow.appendChild(providerLanguage);
     
     // Create a div element containing the provider's Badge Icons.
     let badgeIconsSection = document.createElement("div");
@@ -349,6 +372,7 @@ class Provider {
     this.departing ? badgeIconsSection.appendChild(departingIcon.icon) : null;
     this.departing ? badgeIconsSection.appendChild(this.getDepartingText()) : null;
     this.retired ? badgeIconsSection.appendChild(this.getRetiredIcon()) : null;
+    this.insurances.includes("workerscomp") ? badgeIconsSection.appendChild(workersCompIcon.icon.cloneNode(true)) : null;
     cardHeaderTitleRow.appendChild(badgeIconsSection);
     
     // Create a div element with the class `card-header-specialties-row`.
@@ -487,6 +511,7 @@ const officeIcon = Icon.createIcon("green", "M12 12q.825 0 1.413-.588T14 10q0-.8
 const faxIcon = Icon.createIcon("green", "M8 20V4h10v5h1q1.25 0 2.125.875T22 12v8H8Zm-3.5 1q1.05 0 1.775-.725T7 18.5v-8q0-1.05-.725-1.775T4.5 8q-1.05 0-1.775.725T2 10.5v8q0 1.05.725 1.775T4.5 21ZM10 9h6V6h-6v3Zm6 5q.425 0 .713-.288T17 13q0-.425-.288-.713T16 12q-.425 0-.713.288T15 13q0 .425.288.713T16 14Zm3 0q.425 0 .713-.288T20 13q0-.425-.288-.713T19 12q-.425 0-.713.288T18 13q0 .425.288.713T19 14Zm-3 3q.425 0 .713-.288T17 16q0-.425-.288-.713T16 15q-.425 0-.713.288T15 16q0 .425.288.713T16 17Zm3 0q.425 0 .713-.288T20 16q0-.425-.288-.713T19 15q-.425 0-.713.288T18 16q0 .425.288.713T19 17Zm-9 0h4v-5h-4v5Z");
 const emergencyLineIcon = Icon.createIcon("green", "M5 20v-2h1.6l1.975-6.575q.2-.65.738-1.038T10.5 10h3q.65 0 1.188.388t.737 1.037L17.4 18H19v2H5Zm6-12V3h2v5h-2Zm5.95 2.475L15.525 9.05l3.55-3.525l1.4 1.4l-3.525 3.55ZM18 15v-2h5v2h-5ZM7.05 10.475l-3.525-3.55l1.4-1.4l3.55 3.525l-1.425 1.425ZM1 15v-2h5v2H1Z");
 const importantIcon = Icon.createIcon("orangered", "M13.425 21.45q-.3.3-.663.438t-.762.137q-.4 0-.763-.137t-.662-.438L2.55 13.425q-.3-.3-.437-.663T1.975 12q0-.4.138-.763t.437-.662l8.025-8.025q.3-.3.663-.437T12 1.975q.4 0 .763.138t.662.437l8.025 8.025q.3.3.438.663t.137.762q0 .4-.137.763t-.438.662l-8.025 8.025ZM12 13q.425 0 .713-.287T13 12V8q0-.425-.288-.713T12 7q-.425 0-.713.288T11 8v4q0 .425.288.713T12 13Zm0 3q.425 0 .713-.288T13 15q0-.425-.288-.713T12 14q-.425 0-.713.288T11 15q0 .425.288.713T12 16Z");
+const languageIcon = Icon.createIcon("green", "M9 2a8.002 8.002 0 0 1 7.934 6.965l2.25 3.539c.148.233.118.58-.225.728L17 14.07V17a2 2 0 0 1-2 2h-1.999L13 22H4v-3.694c0-1.18-.436-2.297-1.244-3.305A8 8 0 0 1 9 2Zm12.154 16.102l-1.665-1.11A8.959 8.959 0 0 0 21 12a8.958 8.958 0 0 0-1.51-4.993l1.664-1.11A10.948 10.948 0 0 1 23 12c0 2.258-.68 4.356-1.846 6.102Z");
 // Bagde Icons
 const acceptsNewPatientsIcon = Icon.createIcon("green", "M19 17v2H7v-2s0-4 6-4s6 4 6 4m-3-9a3 3 0 1 0-3 3a3 3 0 0 0 3-3m3.2 5.06A5.6 5.6 0 0 1 21 17v2h3v-2s0-3.45-4.8-3.94M18 5a2.91 2.91 0 0 0-.89.14a5 5 0 0 1 0 5.72A2.91 2.91 0 0 0 18 11a3 3 0 0 0 0-6M8 10H5V7H3v3H0v2h3v3h2v-3h3Z");
 const notAcceptsNewPatientsIcon = Icon.createIcon("red", "M19 17v2H7v-2s0-4 6-4s6 4 6 4m-3-9a3 3 0 1 0-3 3a3 3 0 0 0 3-3m3.2 5.06A5.6 5.6 0 0 1 21 17v2h3v-2s0-3.45-4.8-3.94M18 5a2.91 2.91 0 0 0-.89.14a5 5 0 0 1 0 5.72A2.91 2.91 0 0 0 18 11a3 3 0 0 0 0-6M8 10H0v2h8Z");
@@ -495,6 +520,8 @@ const overThreeIcon = Icon.createIcon("green", "M7.92 7.54c-.8-.34-1.14-1.33-.66
 const onLeaveIcon = Icon.createIcon("orange", "M22 16v-2l-8.5-5V3.5c0-.83-.67-1.5-1.5-1.5s-1.5.67-1.5 1.5V9L2 14v2l8.5-2.5V19L8 20.5V22l4-1l4 1v-1.5L13.5 19v-5.5L22 16z");
 const departingIcon = Icon.createIcon("darkorange", "M15 13h1.5v2.82l2.44 1.41l-.75 1.3L15 16.69V13m4-5H5v11h4.67c-.43-.91-.67-1.93-.67-3a7 7 0 0 1 7-7c1.07 0 2.09.24 3 .67V8M5 21a2 2 0 0 1-2-2V5c0-1.11.89-2 2-2h1V1h2v2h8V1h2v2h1a2 2 0 0 1 2 2v6.1c1.24 1.26 2 2.99 2 4.9a7 7 0 0 1-7 7c-1.91 0-3.64-.76-4.9-2H5m11-9.85A4.85 4.85 0 0 0 11.15 16c0 2.68 2.17 4.85 4.85 4.85A4.85 4.85 0 0 0 20.85 16c0-2.68-2.17-4.85-4.85-4.85Z");
 const retiredIcon = Icon.createIcon("red", "M19 19H5V8h14m0-5h-1V1h-2v2H8V1H6v2H5a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2M9.31 17l2.44-2.44L14.19 17l1.06-1.06l-2.44-2.44l2.44-2.44L14.19 10l-2.44 2.44L9.31 10l-1.06 1.06l2.44 2.44l-2.44 2.44L9.31 17Z");
+// const workersCompIcon = Icon.createIcon("green", "M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10s10-4.48 10-10S17.52 2 12 2m0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8s8 3.59 8 8s-3.59 8-8 8m-1-5h2v2h-2v-2m0-8h2v6h-2V7Z");
+const workersCompIcon = Icon.createIcon("green", "M12 15c-4.42 0-8 1.79-8 4v2h16v-2c0-2.21-3.58-4-8-4M8 9a4 4 0 0 0 4 4a4 4 0 0 0 4-4m-4.5-7c-.3 0-.5.21-.5.5v3h-1V3s-2.25.86-2.25 3.75c0 0-.75.14-.75 1.25h10c-.05-1.11-.75-1.25-.75-1.25C16.25 3.86 14 3 14 3v2.5h-1v-3c0-.29-.19-.5-.5-.5h-1Z");
 // Specialty Icons
 const internalMedicineIcon = Icon.createIcon("green", "M10.5 17h3v-2.5H16v-3h-2.5V9h-3v2.5H8v3h2.5V17ZM4 21V9l8-6l8 6v12H4Z");
 const allergyIcon = Icon.createIcon("green", "M16 12.77a2 2 0 0 1-.14-2.65a5 5 0 0 0-2.82-8A5.74 5.74 0 0 0 12 2a5 5 0 0 0-5 5a5 5 0 0 0 1.11 3.12a2 2 0 0 1-.11 2.6a5.5 5.5 0 0 0 2.81 9.15A5.42 5.42 0 0 0 12 22a5.5 5.5 0 0 0 4-9.23M13 5a1 1 0 1 1-1 1a1 1 0 0 1 1-1m-2 13a1 1 0 1 1 1-1a1 1 0 0 1-1 1m1-3a1 1 0 1 1 1 1a1 1 0 0 1-1-1m2 4a1 1 0 1 1 1-1a1 1 0 0 1-1 1Z");
@@ -525,36 +552,35 @@ const generalSurgeryIcon = Icon.createIcon("green", "M12 19q0-2.5-1.75-4.25T6 13
 const provider1 = new Provider(
   "John",
   "Doe",
-  "MD",
+  "DR",
   "male",
   ["cardiology", "internalmedicine"],
   true,
   ["whiteplains", "rye"],
   ["555-123-4567", "555-456-7890"],
   ["555-987-6543", "555-654-3210"],
-  ["English", "Spanish"],
-  ["Insurance A", "Insurance B"],
+  ["english", "spanish"],
+  ["Insurance A", "workerscomp"],
   false,
   false,
   null,
   false,
   "Adults",
   "(test) This provider does not have staff, so do not send Patient Cases."
-
 );
 
 const provider2 = new Provider(
   "Jane",
   "Smith",
-  "DO",
+  "DR",
   "female",
   ["dermatology", "internalmedicine"],
   false,
   ["whiteplains"],
   ["555-456-7890"],
   ["555-654-3210"],
-  ["English", "French"],
-  ["Insurance C", "Insurance D"],
+  ["english", "french"],
+  ["Insurance C", "Insurance D", "workerscomp"],
   false,
   true,
   "April / 20 / 2023",
@@ -572,7 +598,7 @@ const provider3 = new Provider(
   ["whiteplains"],
   ["555-789-0123"],
   ["555-321-0987"],
-  ["English"],
+  ["english"],
   ["Insurance A", "Insurance B", "Insurance C"],
   true,
   false,
@@ -584,14 +610,14 @@ const provider3 = new Provider(
 const provider4 = new Provider(
   "Bob",
   "Jones",
-  "MD",
+  "DR",
   "male",
   ["cardiology", "internalmedicine"],
   false,
   ["whiteplains", "rye"],
   ["555-123-4567", "555-456-7890"],
   ["555-987-6543", "555-654-3210"],
-  ["English", "Spanish"],
+  ["english", "spanish"],
   ["Insurance A", "Insurance B"],
   false,
   false,
@@ -676,7 +702,7 @@ function runSearch(event) {
     selectedInsurance: document.getElementById("insurance").value,
     selectedTitle: document.getElementById("title").value,
     selectedAcceptance: document.getElementById("accepts-new-patients").checked,
-    selectedLanguage: document.getElementById("speaks-spanish").checked,
+    selectedLanguage: document.getElementById("languages").value,
   };
 
   // Map over the array of all providers and create a new array of objects
@@ -707,10 +733,10 @@ function runSearch(event) {
       provider.relevanceScore += 1;
     }
     
-    if (query.selectedLanguage && provider.speaksSpanish === true) {
+    if (query.selectedLanguage !== "" && provider.languages.includes(query.selectedLanguage)) {
       provider.relevanceScore += 1;
     }
-    
+
     if (query.selectedGender !== provider.gender && query.selectedGender !== "") {
       provider.relevanceScore = 0;
     }
@@ -724,6 +750,14 @@ function runSearch(event) {
     }
 
     if (query.selectedAcceptance && !provider.acceptsNewPatients) {
+      provider.relevanceScore = 0;
+    }
+
+    if (query.selectedTitle !== "" && provider.title !== query.selectedTitle) { 
+      provider.relevanceScore = 0;
+    }
+    
+    if (query.selectedLanguage !== "" && !provider.languages.includes(query.selectedLanguage)) {
       provider.relevanceScore = 0;
     }
 
