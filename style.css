@@ -31,8 +31,9 @@
     --main-gray-light: hsl(203, 29%, 95%);
     --main-gray-lighter: hsl(203, 29%, 97%);
     --main-gray-lightest: hsl(203, 29%, 99%);
-
 }
+
+
 
 * {
     box-sizing: border-box;
@@ -192,6 +193,7 @@ button:hover {
 .card-header-provider-last-name {
     font-size: 1.5rem;
     font-weight: bold;
+    margin-right: 0.5rem;
 }
 
 .badge-icons-section {
@@ -224,7 +226,7 @@ button:hover {
     flex-grow: 1;
     width: 50%;
     background: linear-gradient(180deg, var(--main-gray-dark) 0%, var(--main-gray-darkest) 100%);
-    border: none;
+    border: 1px var(--main-color) solid;
     border-radius: 5px;
     cursor: pointer;
     font-size: 1rem;
@@ -239,6 +241,7 @@ button:hover {
     flex-wrap: wrap;
     color: rgb(253, 243, 243);
     font-size: 1rem;
+    text-shadow: var(--main-gray-darkest) 1px 0 15px;
 }
 
 .card-body {
@@ -271,11 +274,6 @@ button:hover {
     gap: 1rem;
 }
 
-.common-visit-reason-paragraph .hidden {
-    /* display: none; */
-    background-color: red;
-}
-
 .common-visit-reasons-paragraph {
     flex: 1;
     width: 50%;
@@ -294,4 +292,12 @@ button:hover {
     background-color: var(--main-gray-darker)
 }
 
+.location-icon-text {
+    display: inline-block;
+}
 
+.provider-language-text {
+  color: green;
+  font-weight: bold;
+  margin-left: 1rem;
+}
