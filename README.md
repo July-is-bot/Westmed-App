@@ -32,4 +32,7 @@ Additionally, the Provider Card contains a set of Badge Icons at the top-right c
 
 Lastly, if there is crucial information that the agent must be aware of regarding a specific provider, an "Important Information" section will appear in red text to ensure visibility and attention.
 
+## Excel Sheet Upload Feature
+The search engine enables users to upload provider information to the database using an Excel Sheet. This feature simplifies the process of adding new providers or updating existing information and ensures the database remains accurate and up-to-date.
+
 In conclusion, the Westmed Provider Search Engine serves as a powerful tool for call center agents, streamlining the process of locating and sharing provider information with clients. By implementing this search engine, our company demonstrates its commitment to providing exceptional customer service and enhancing the overall client experience. The ease of use and comprehensiveness of the search engine ensure that our agents have the most accurate and up-to-date information at their fingertips, empowering them to deliver the best possible support to our valued customers.
