@@ -16,7 +16,7 @@
 		<h1 class="page-title">Provider Search</h1>
 	</header>
 	<main>
-		<form>
+		<form id="search-form">
 			<label action="#" for="search-query">Search:</label>
 			<input type="text" id="search-query" name="search-query">
 
@@ -110,7 +110,8 @@
 				<label for="accepts-new-patients">Show Only Accepting New Patients</label>
 			</span>
 
-			<button type="submit" onclick="runSearch(event)">Search</button>
+			<!-- <button type="submit" onclick="runSearch(event)">Search</button> -->
+			<button type="submit">Search</button>
 		</form>
 
 		<section id="search-results">
