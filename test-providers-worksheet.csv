@@ -1,3 +1,4 @@
-﻿firstName;lastName;title;gender;specialty;acceptsNewPatients;office;fax;emergencyLine;languages;insurances;onLeave;departing;departingDate;retired;ageGroup;importantInfo
-Finger;Doe;DR;male;cardiology;TRUE;whiteplains;555-555-666;7354;english;workerscomp;FALSE;FALSE;null;FALSE;"""+18""";this provider has no staff so do not sen messages
-Paola;Smith;NP;female;dermatology, internalmedicine;FALSE;whiteplains;555-555-666;8364;english, french;insurance A;FALSE;TRUE;April / 20 / 2023;FALSE;"""+18""";
+firstName;lastName;title;gender;specialty;acceptsNewPatients;office;fax;emergencyLine;languages;insurances;onLeave;departing;departingDate;retired;ageGroup;importantInfo
+Finger;Doe;DR;male;cardiology;TRUE;whiteplains;555-555-666;7354;english;workerscomp;FALSE;FALSE;null;FALSE;18;this provider has no staff so do not sen messages
+Paola;Smith;NP;female;dermatology, internalmedicine;FALSE;whiteplains;555-555-666;8364;english, french;insurance A;FALSE;TRUE;April / 20 / 2023;FALSE;18;
+John;Johnson;DR;male;internalmedicine, endocrinology;TRUE;whiteplains, rye;555-555-666, 555-555-876;8364, 12345;english, french;insurance A;FALSE;FALSE;null;FALSE;18;
