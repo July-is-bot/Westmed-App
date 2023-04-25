@@ -196,6 +196,11 @@ button:hover {
     margin-right: 0.5rem;
 }
 
+.age-group {
+  color: green;
+  margin-left: 0.5rem;
+}
+
 .badge-icons-section {
     display: flex;
     flex-direction: row;
