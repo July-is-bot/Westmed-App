@@ -1,3 +1,5 @@
+import { Provider } from '../Classes/westmed-classes.js';
+
 //This is the leveshteinDistance function, it allows for fuzzy search. 
 //It takes two strings as parameters and returns the number of edits needed to make the strings equal
 //The lower the number, the more similar the strings are
