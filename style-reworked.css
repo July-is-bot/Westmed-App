@@ -43,6 +43,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: var(--main-gray-lighter);
 }
 
 header {
@@ -99,7 +100,7 @@ form {
 .search-form select {
     padding: 5px;
 }
- 
+
 .form-checkbox-wrap {
     width: 100%;
     margin: 0.5rem 0;
@@ -128,7 +129,7 @@ button:hover {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
-  }
+}
 
 .provider-card {
     background-color: var(--main-gray);
@@ -175,7 +176,7 @@ button:hover {
     padding-left: 0;
 }
 
-.card-header-title-row h1{
+.card-header-title-row h1 {
     font-size: 2rem;
     font-weight: bold;
 }
@@ -197,8 +198,8 @@ button:hover {
 }
 
 .age-group {
-  color: green;
-  margin-left: 0.5rem;
+    color: green;
+    margin-left: 0.5rem;
 }
 
 .badge-icons-section {
@@ -256,7 +257,7 @@ button:hover {
     margin: 1rem 0;
 }
 
-.gender-icon svg{
+.gender-icon svg {
     width: 2rem;
     height: 2rem;
 }
@@ -302,7 +303,65 @@ button:hover {
 }
 
 .provider-language-text {
-  color: green;
-  font-weight: bold;
-  margin-left: 1rem;
+    color: green;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+/* Submit Provider Page Styles */
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: var(--main-gray);
+    border: var(--main-color) 1px solid;
+    border-radius: 5px;
+    padding: 15%;
+}
+
+#import-preview {
+    height: auto;
+    display: flex;
+    overflow: scroll;
+}
+
+.provider-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 3rem;
+}
+
+.provider-table th,
+.provider-table td {
+    padding: 0.5rem;
+    border: 1px solid black;
+}
+
+.provider-table th {
+    text-align: left;
+    background-color: var(--main-gray-darker);
+}
+
+.provider-table tr:nth-child(even) {
+    background-color: var(--main-gray-light);
+}
+
+.provider-table caption {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: var(--main-color);
+    color: var(--main-gray-lightest);
+    padding: 0.5rem;
+}
+
+.provider-table-row-cell-compatible {
+    color: green;
+
+}
+
+.provider-table-row-cell-non-compatible {
+    color: red;
+
 }
