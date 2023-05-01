@@ -1,546 +1,45 @@
+import { isDataCompatible, setClassSuffix } from "../Functions/import-data-functions.js";
+
 class Icon {
-    constructor(name = "current color", path) {
-      // Add the name and path properties to the instance
-      this._name = name;
-      // Create a path element with the given path, and add it to the instance
-      this._path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-      this._path.setAttribute("fill", name);
-      this._path.setAttribute("d", path);
-      // Create a svg element with the given name and path, and add it to the instance
-      this._svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-      this._svg.setAttribute("viewBox", "0 0 24 24");
-      this.svg.setAttribute("width", "24");
-      this._svg.setAttribute("height", "24");
-      // Add the path element to the svg element
-      this._svg.appendChild(this._path);
-      this._icon = document.createElement("div");
-      this._icon.classList.add("icon");
-      this._icon.appendChild(this._svg);
-      this._relevanceScore = 0;
-    }
-  
-    get name() {
-      return this._name;
-    }
-  
-    get path() {
-      return this._path;
-    }
-  
-    get svg() {
-      return this._svg;
-    }
-  
-    get icon() {
-      return this._icon;
-    }
-  
-    static createIcon(name, path) {
-      return new Icon(name, path);
-    }
-}
+  constructor(name = "current color", path) {
+    // Add the name and path properties to the instance
+    this._name = name;
+    // Create a path element with the given path, and add it to the instance
+    this._path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    this._path.setAttribute("fill", name);
+    this._path.setAttribute("d", path);
+    // Create a svg element with the given name and path, and add it to the instance
+    this._svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    this._svg.setAttribute("viewBox", "0 0 24 24");
+    this.svg.setAttribute("width", "24");
+    this._svg.setAttribute("height", "24");
+    // Add the path element to the svg element
+    this._svg.appendChild(this._path);
+    this._icon = document.createElement("div");
+    this._icon.classList.add("icon");
+    this._icon.appendChild(this._svg);
+    this._relevanceScore = 0;
+  }
 
-// Define a Provider class
-class Provider {
-    // Declare a static property `allProviders` to store all instances of the class
-    static allProviders = [];
-  
-    // Define a constructor method
-    constructor(firstName="Julio César", lastName="Correa", title="Dr", gender="male", specialty=["physicaltherapy"], acceptsNewPatients=true, office=["whiteplains"], fax=["123456789"], emergencyLine=["123"], languages="english", insurances = [], onLeave = false, departing = false, departingDate, retired=false, ageGroup="+18", importantInfo = "MISSING INFORMATION") {
-      // Assign the input values to the respective properties of the instance
-      this._firstName = firstName;
-      this._lastName = lastName;
-      this._title = title;
-      this._gender = gender;
-      this._specialty = specialty || [];
-      this._acceptsNewPatients = acceptsNewPatients;
-      this._office = office || [];
-      this._fax = fax || [];
-      this._emergencyLine = emergencyLine || [];
-      this._languages = languages;
-      this._insurances = insurances || [];
-      this._onLeave = onLeave;
-      this._departing = departing;
-      this._departingDate = departingDate;
-      this._retired = retired;
-      this._ageGroup = ageGroup;
-      this._importantInfo = importantInfo;
-  
-      // Add the new instance to the `allProviders` array
-      Provider.allProviders.push(this);
-    }
-  
-    // Gether Methods
-    // Getter for the firstName property
-    get firstName() {
-      return this._firstName;
-    }
-  
-    // Getter for the lastName property
-    get lastName() {
-      return this._lastName;
-    }
-  
-    // Getter for the office property
-    get office() {
-      return this._office;
-    }
-  
-    // Getter for the specialty property
-    get specialty() {
-      return this._specialty;
-    }
-  
-    // Getter for the title property
-    get title() {
-      return this._title;
-    }
-  
-    // Getter for the acceptsNewPatients property
-    get acceptsNewPatients() {
-      return this._acceptsNewPatients;
-    }
-  
-    // Getter for the onLeave property
-    get onLeave() {
-      return this._onLeave;
-    }
-  
-    // Getter for the departing property
-    get departing() {
-      return this._departing;
-    }
-  
-    // Getter for the departingDate property
-    get departingDate() {
-      return this._departingDate;
-    }
-  
-    // Getter for the retired property
-    get retired() {
-      return this._retired;
-    }
-  
-    // Getter for the insurances property
-    get insurances() {
-      return this._insurances;
-    }
-  
-    // Getter for the gender property
-    get gender() {
-      return this._gender;
-    }
-  
-    // Getter for the fax property
-    get fax() {
-      return this._fax;
-    }
-  
-    // Getter for the languages property
-    get languages() {
-      return this._languages;
-    }
-  
-    // Getter for the ageGroup property
-    get ageGroup() {
-      return this._ageGroup;
-    }
-  
-    // Getter for the emergencyLine property
-    get emergencyLine() {
-      return this._emergencyLine;
-    }
-  
-    // Getter for the importantInfo property
-    get importantInfo() {
-      return this._importantInfo;
-    }
-  
-    // Getter for the relevanceScore property
-    get relevanceScore() {
-      return this._relevanceScore;
-    }
-  
-    // Setter for the relevanceScore property
-    set relevanceScore(score) {
-      this._relevanceScore = score;
-    }
-  
-    // Define a method getLanguages to return the languages spoken by the provider, with the first letter of each language capitalized
-    getLanguages() {
-      // Helper function to capitalize the first letter of a string
-      const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
-  
-      // Check if the _languages property is an array
-      if (Array.isArray(this._languages)) {
-        // Capitalize the first letter of each language and join them with commas
-        return this._languages.map(capitalizeFirstLetter).join(", ");
-      } else {
-        // Capitalize the first letter of the single language
-        return capitalizeFirstLetter(this._languages);
-      }
-    }
-  
-    // Define a method getAgeGroup to return the age group of th e provider
-    getAgeGroup() {
-      const ageMap = {
-        "Adults" : "+18",
-        "18" : "+18",
-        "allages" : "All Ages",
-      }
-  
-        return ageMap[this.ageGroup] || this.ageGroup;
-    }
-  
-    // Define a method getAddress to return the addresses of the provider's offices
-    getAddress() {
-      // Create a map of office names to their corresponding addresses
-      const addressMap = {
-        "whiteplains": "210 Westchester Ave, White Plains, NY 10601",
-        "rye": "1 Theall Rd, Rye, NY 10580",
-        "purchase": "3030 Westchester ave, Purchase, NY 10577",
-        "yonkersbt": "1084 North Broadway, Yonkers, NY 10701",
-        "yonkersnr": "74 Market Street, Yonkers, NY 10701",
-      };
-      // Map the provider's offices to their addresses using the addressMap
-      return this._office.map((office) => addressMap[office]);
-    }
-  
-    // Define a method getGenderIcon to return the appropriate gender icon based on the provider's gender
-    getGenderIcon() {
-      // Check if the provider's gender is male
-      if (this._gender === "male") {
-        // Return a clone of the male icon
-        return maleIcon.icon.cloneNode(true);
-      } else if (this._gender === "female") {
-        // Return a clone of the female icon
-        return femaleIcon.icon.cloneNode(true);
-      } else {
-        // Return undefined if the gender is not male or female
-        return undefined;
-      }
-    }
-  
-  
-    // Define a method `getAcceptsNewPatientsIcon` to return the accepts new patients icon if the provider accepts new patients, and the not accepts new patients icon if the provider does not accept new patients.
-    getAcceptsNewPatientsIcon() {
-      if (this.acceptsNewPatients) {
-        return acceptsNewPatientsIcon.icon.cloneNode(true);
-      } else {
-        return notAcceptsNewPatientsIcon.icon.cloneNode(true);
-      }
-    }
-  
-    // Define a method `getOnLeaveIcon` to return the on leave icon if the provider is on leave, and the not on leave icon if the provider is not on leave.
-    getOnLeaveIcon() {
-      if (this._onLeave) {
-        return onLeaveIcon.icon.cloneNode(true);
-      }
-    }
-  
-    // Define a method `getAgeGroupIcon` to return the age group icon based on the age group of the provider.
-    getAgeGroupIcon() {
-      if (this._ageGroup === "+18") {
-        return overEighteenIcon.icon;
-      } else if (this._ageGroup === "+3") {
-        return overThreeIcon.icon.cloneNode(true);
-      }
-    }
-  
-    // Define a method `getOnLeaveIcon` to return the on leave icon if the provider is on leave, and the not on leave icon if the provider is not on leave.
-    getOnLeaveIcon() {
-      return onLeaveIcon.icon.cloneNode(true);
-    }
-  
-    // Define a method 'getRetiredIcon' to return the retired icon if the provider is retired, and the not retired icon if the provider is not retired.
-    getRetiredIcon() {
-      return retiredIcon.icon.cloneNode(true);
-    }
-  
-    // Define a method `getDepartingIcon` to return the departing icon if the provider is departing, and the not departing icon if the provider is not departing.
-    getDepartingText() {
-      if (this._departing) {
-        let departingDateText = document.createElement("p");
-        departingDateText.classList.add("departing-date");
-        departingDateText.innerText = this._departingDate;
-        console.log(this._departingDate);
-        // departingIcon.icon.appendChild(departingDateText);
-  
-        // return departingIcon.icon.cloneNode(true);
-        return departingDateText;
-      }
-    }
-  
-    // Define a method `getSpecialtyIcon` to return the specialty icon based on the specialty of the provider.
-    getSpecialtyIcon() {
-      const specialtyMap = {
-        "internalmedicine": internalMedicineIcon.icon.cloneNode(true),
-        "gastroenterology": gastroenterologyIcon.icon.cloneNode(true),
-        "allergy": allergyIcon.icon.cloneNode(true).cloneNode(true),
-        "neurology": neurologyIcon.icon.cloneNode(true),
-        "podiatry": podiatryIcon.icon.cloneNode(true),
-        "pulmonology": pulmonologyIcon.icon.cloneNode(true),
-        "physicaltherapy": physicalTherapyIcon.icon.cloneNode(true),
-        "endocrinology": endocrinologyIcon.icon.cloneNode(true),
-        "rheumatology": rheumatologyIcon.icon.cloneNode(true),
-        "cardiology": cardiologyIcon.icon.cloneNode(true),
-        "dermatology": dermatologyIcon.icon.cloneNode(true),
-        "nephrology": nephrologyIcon.icon.cloneNode(true),
-        "vascular": vascularIcon.icon.cloneNode(true),
-        "oncology": oncologyIcon.icon.cloneNode(true),
-        "weightmanagement": weightManagementIcon.icon.cloneNode(true),
-        "orthopedics": orthopedicsIcon.icon.cloneNode(true),
-        "urology": urologyIcon.icon.cloneNode(true),
-        "ophthalmology": ophthalmologyIcon.icon.cloneNode(true),
-      }
-      let specialtyIcon = this._specialty.map(specialty => specialtyMap[specialty]);
-      return specialtyIcon;
-    }
-  
-    // Define a method "getCommonVisitReasons" to return the common visit reasons of each specialty.
-    getCommonVisitReasons() {
-      const specialtyMap = {
-        "internalmedicine": "Common Visit Reasons: Cold, Flu, Fever, Cough, Sinus",
-        "gastroenterology": "Common Visit Reasons: Stomach Pain, Stomach Ulcer, Stomach Cancer, Stomach Bleeding, Stomach Infection, Stomach Flu, Stomach Virus, Stomach Bacteria, Stomach Parasite",
-        "allergy": "Common Visit Reasons: Allergy, Asthma, Sinus, Cold, Flu, Fever, Cough",
-        "neurology": "Common Visit Reasons: Headache, Migraine, Dizziness, Seizure, Stroke, Numbness, Tingling, Weakness",
-        "podiatry": "Common Visit Reasons: Foot Pain, Foot Injury, Foot Infection, Foot Ulcer, Foot Tumor, Foot Fracture, Foot Sprain, Foot Strain, Foot Arthritis, Foot Bursitis, Foot Tendonitis, Foot Tendonosis, Foot Tendinosis, Foot Tendinopathy",
-        "pulmonology": "Common Visit Reasons: Asthma, COPD, Emphysema, Bronchitis, Lung Cancer, Lung Infection",
-        "physicaltherapy": "Common Visit Reasons: Back Pain, Neck Pain, Shoulder Pain, Knee Pain, Ankle Pain, Foot Pain, Elbow Pain, Wrist Pain, Hand Pain, Hip Pain, Back Injury, Neck Injury, Shoulder Injury, Knee Injury, Ankle Injury, Foot Injury, Elbow Injury, Wrist Injury, Hand Injury, Hip Injury, Back Strain, Neck Strain, Shoulder Strain, Knee Strain, Ankle Strain, Foot Strain, Elbow Strain, Wrist Strain, Hand Strain, Hip Strain, Back Sprain, Neck Sprain, Shoulder Sprain, Knee Sprain, Ankle Sprain, Foot Sprain, Elbow Sprain, Wrist Sprain, Hand Sprain, Hip Sprain, Back Arthritis, Neck Arthritis, Shoulder Arthritis, Knee Arthritis, Ankle Arthritis, Foot Arthritis, Elbow Arthritis, Wrist Arthritis, Hand Arthritis, Hip Arthritis, Back Bursitis, Neck Bursitis, Shoulder Bursitis, Knee Bursitis, Ankle Bursitis, Foot Bursitis, Elbow Bursitis, Wrist Bursitis, Hand Bursitis, Hip Bursitis, Back Tendonitis, Neck Tendonitis, Shoulder Tendonitis, Knee Tendonitis, Ankle Tendonitis, Foot Tendonitis, Elbow Tendonitis, Wrist Tendonitis, Hand Tendonitis, Hip Tendonitis, Back Tendonosis, Neck Tendonosis, Shoulder Tendonosis, Knee Tendonosis, Ankle Tendonosis, Foot Tendonosis, Elbow Tendonosis, Wrist Tendonosis, Hand Tendonosis, Hip Tendonosis, Back Tendinosis, Neck Tendinosis, Shoulder Tendinosis, Knee Tendinosis, Ankle Tendinosis, Foot Tendinosis, Elbow Tendinosis, Wrist Tendinosis, Hand Tendinosis, Hip Tendinosis, Back Tendinopathy, Neck Tendinopathy, Shoulder Tendinopathy, Knee Tendinopathy, Ankle Tendinopathy, Foot Tendinopathy, Elbow Tendinopathy, Wrist Tendinopathy, Hand Tendinopathy, Hip Tendinopathy, Back Degeneration, Neck Degeneration, Shoulder Degeneration, Knee Degeneration",
-        "endocrinology": "Common Visit Reasons: Diabetes, Thyroid, Adrenal, Pituitary, Osteoporosis, Metabolic Syndrome, Obesity, Weight Management, Weight Loss, Weight Gain, Insulin Resistance, Insulin Deficiency, Insulin Overproduction",
-        "rheumatology": "Common Visit Reasons: Arthritis, Osteoarthritis, Rheumatoid Arthritis, Gout, Osteoporosis, Fibromyalgia, Lupus, Sjogren's, Scleroderma, Psoriatic Arthritis, Ankylosing Spondylitis, Polymyalgia Rheumatica, Vasculitis, Sarcoidosis, Spondyloarthritis, Systemic Lupus Erythematosus, Systemic Sclerosis",
-        "cardiology": "Common Visit Reasons: Heart Attack, Heart Failure",
-        "dermatology": "Common Visit Reasons: Acne, Eczema, Psoriasis, Rosacea, Skin Cancer, Skin Infection, Skin Tumor",
-        "nephrology": "Common Visit Reasons: Kidney Function Follow Up",
-        "vascular": "Common Visit Reasons: Varicose Veins, Peripheral Arterial Disease, Peripheral Vascular Disease, Carotid Artery Disease, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion",
-        "oncology": "Common Visit Reasons: Cancer Follow Up, Cancer Treatment Follow Up, Cancer Screening",
-        "weightmanagement": "lol no",
-        "orthopedics": "Common Visit Reasons: Knee Pain, Knee Injury, Knee Arthritis, Knee Replacement, Knee Surgery, Knee Sprain, Knee Strain, Knee Fracture, Knee Dislocation, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon",
-        "urology": "Common Visit Reasons: Urology Consult, Urology Follow Up, Urology Screening, Urology Treatment, Urology Surge",
-        "ophthalmology": "Common Visit Reasons: Eye Exam, Eye Consult, Eye Follow Up, Eye Screening, Eye Treatment, Eye Surgery",
-      };
-  
-      return this.specialty.map((specialty) => specialtyMap[specialty]);
-    }
-  
-    // Define a static method `getSpecialtyName` to return the specialty name from the specialty code. 
-    getSpecialtyName() {
-      let specialtyMap = {
-        "internalmedicine": "Internal Medicine",
-        "gastroenterology": "Gastroenterology",
-        "allergy": "Allergy",
-        "neurology": "Neurology",
-        "podiatry": "Podiatry",
-        "pulmonology": "Pulmonology",
-        "physicaltherapy": "Physical Therapy",
-        "endocrinology": "Endocrinology",
-        "rheumatology": "Rheumatology",
-        "cardiology": "Cardiology",
-        "dermatology": "Dermatology",
-        "nephrology": "Nephrology",
-        "vascular": "Vascular",
-        "oncology": "Oncology",
-        "weightmanagement": "Weight Management",
-        "orthopedics": "Orthopedics",
-        "urology": "Urology",
-        "ophthalmology": "Ophthalmology"
-      };
-      return this.specialty.map((specialty) => specialtyMap[specialty]);
-    }
-  
-    static getAllProviders() {
-      return Provider.allProviders;
-    }
-  
-    // Define a static method `createProviderCard` to create a provider card, and append it to the DOM, using the data from the instance. This method should be called in the `displaySearchResults` function.
-    providerCard() {
-      // Create a div element with the class `provider-card`.
-      let providerCard = document.createElement("div");
-      providerCard.classList.add("provider-card");
-  
-      // Create a div element with the class `card-header`.
-      let cardHeader = document.createElement("div");
-      cardHeader.classList.add("card-header");
-  
-      // Create a div element with the class `card-header-title-row`.
-      let cardHeaderTitleRow = document.createElement("div");
-      cardHeaderTitleRow.classList.add("card-header-title-row");
-      cardHeader.appendChild(cardHeaderTitleRow);
-  
-      // Append the gender icon to the card header title row.
-      cardHeaderTitleRow.appendChild(this.getGenderIcon());
-  
-      // Create a h1 element with the class `card-header-provider-title`.
-      let cardHeaderProviderTitle = document.createElement("h1");
-      cardHeaderProviderTitle.classList.add("card-header-provider-title");
-      cardHeaderProviderTitle.textContent = this.title;
-      cardHeaderTitleRow.appendChild(cardHeaderProviderTitle);
-  
-      // Create a h1 element with the class `card-header-provider-first-name`.
-      let cardHeaderProviderFirstName = document.createElement("h1");
-      cardHeaderProviderFirstName.classList.add("card-header-provider-first-name");
-      cardHeaderProviderFirstName.textContent = this.firstName;
-      cardHeaderTitleRow.appendChild(cardHeaderProviderFirstName);
-  
-      // Create a h1 element with the class `card-header-provider-last-name`.
-      let cardHeaderProviderLastName = document.createElement("h1");
-      cardHeaderProviderLastName.classList.add("card-header-provider-last-name");
-      cardHeaderProviderLastName.textContent = this.lastName;
-      cardHeaderTitleRow.appendChild(cardHeaderProviderLastName);
-  
-      // Create a div for the provider's languages.
-      let providerLanguage = document.createElement("div");
-      providerLanguage.classList.add("provider-language");
-      providerLanguage.appendChild(languageIcon.icon.cloneNode(true));
-  
-      let providerLanguageText = document.createElement("p");
-      providerLanguageText.classList.add("provider-language-text");
-      providerLanguageText.textContent = this.getLanguages();
-  
-      providerLanguage.appendChild(providerLanguageText);
-      cardHeaderTitleRow.appendChild(providerLanguage);
-  
-      // Create a div for the provider's Age Group
-      let cardHeaderProviderAgeGroup = document.createElement("h2");
-      cardHeaderProviderAgeGroup.classList.add("age-group");
-      cardHeaderProviderAgeGroup.textContent = this.getAgeGroup();
-      cardHeaderTitleRow.appendChild(cardHeaderProviderAgeGroup);
-  
-      // Create a div element containing the provider's Badge Icons.
-      let badgeIconsSection = document.createElement("div");
-      badgeIconsSection.classList.add("badge-icons-section");
-      badgeIconsSection.appendChild(this.getAcceptsNewPatientsIcon());
-      this.onLeave ? badgeIconsSection.appendChild(this.getOnLeaveIcon()) : null;
-      this.departing ? badgeIconsSection.appendChild(departingIcon.icon) : null;
-      this.departing ? badgeIconsSection.appendChild(this.getDepartingText()) : null;
-      this.retired ? badgeIconsSection.appendChild(this.getRetiredIcon()) : null;
-      this.insurances.includes("workerscomp") ? badgeIconsSection.appendChild(workersCompIcon.icon.cloneNode(true)) : null;
-      cardHeaderTitleRow.appendChild(badgeIconsSection);
-  
-      // Create a div element with the class `card-header-specialties-row`.
-      let CardHeaderSpecialtiesRow = document.createElement("div");
-      CardHeaderSpecialtiesRow.classList.add("card-header-specialties-row");
-      cardHeader.appendChild(CardHeaderSpecialtiesRow);
-  
-      // Create a button for each provider's specialty. The button contains the specialty icon, and the specialty name.
-      this.specialty.forEach((specialty, index) => {
-        let specialtyButton = document.createElement("button");
-        specialtyButton.classList.add("specialty-button");
-        specialtyButton.appendChild(this.getSpecialtyIcon()[index]);
-  
-        // Create a span element with the class `specialty-name`.
-        let specialtyName = document.createElement("span");
-        specialtyName.classList.add("specialty-name");
-        specialtyName.textContent = this.getSpecialtyName()[index];
-        specialtyButton.appendChild(specialtyName);
-  
-        CardHeaderSpecialtiesRow.appendChild(specialtyButton);
-      });
-  
-      // Create a div for the Common Visit Reasons row. This row contains the common visit reasons for the specialty selected in the specialty row.
-      let commonVisitReasonsRow = document.createElement("div");
-      commonVisitReasonsRow.classList.add("common-visit-reasons-row");
-      this.specialty.forEach((specialty, index) => {
-        let commotVisitReasonParagraph = document.createElement("p");
-        commotVisitReasonParagraph.classList.add("common-visit-reasons-paragraph");
-        commotVisitReasonParagraph.textContent = this.getCommonVisitReasons()[index];
-  
-        commonVisitReasonsRow.appendChild(commotVisitReasonParagraph);
-        cardHeader.appendChild(commonVisitReasonsRow);
-      });
-  
-      // Create a div for the "important information" row. This row contains the important information for the provider.
-      if (this.importantInfo !== "none" && this.importantInfo !== "") {
-        let importantInfoRow = document.createElement("div");
-        importantInfoRow.classList.add("important-info-row");
-        importantInfoRow.appendChild(importantIcon.icon.cloneNode(true));
-  
-  
-        let importantInfo = document.createElement("p");
-        importantInfo.textContent = this.importantInfo;
-        importantInfo.classList.add("important-info");
-        importantInfoRow.appendChild(importantInfo);
-        cardHeader.appendChild(importantInfoRow);
-  
-      };
-  
-      // Create a div element with the class `card-body`.
-      let cardBody = document.createElement("div");
-      cardBody.classList.add("card-body");
-  
-      // Create a left side for the card body.
-      let cardBodyLeftSide = document.createElement("div");
-      cardBodyLeftSide.classList.add("card-body-left-side");
-  
-      // Create a right side for the card body.
-      let cardBodyRightSide = document.createElement("div");
-      cardBodyRightSide.classList.add("card-body-right-side");
-  
-  
-  
-      this.office.forEach((office, index) => {
-        // Create a div that contains the provider's address, with the respective fax number.
-        let locationGroup = document.createElement("div");
-        locationGroup.classList.add("location-group");
-  
-        locationGroup.appendChild(officeIcon.icon.cloneNode(true))
-  
-        let location = document.createElement("p");
-        location.classList.add("location");
-        // location.textContent = this.office[index];
-        location.textContent = this.getAddress()[index];
-        locationGroup.appendChild(location);
-  
-        locationGroup.appendChild(faxIcon.icon.cloneNode(true));
-  
-        let fax = document.createElement("p");
-        fax.classList.add("fax");
-        fax.textContent = this.fax[index];
-        locationGroup.appendChild(fax);
-  
-        locationGroup.appendChild(emergencyLineIcon.icon.cloneNode(true));
-  
-        let emergencyLine = document.createElement("p");
-        emergencyLine.classList.add("emergency-line");
-        emergencyLine.textContent = this.emergencyLine[index];
-        locationGroup.appendChild(emergencyLine);
-  
-        cardBody.appendChild(locationGroup);
-      });
-  
-  
-  
-      // Append the card header to the provider card.
-      providerCard.appendChild(cardHeader);
-  
-      // Append the card body to the provider card.
-      providerCard.appendChild(cardBody);
-  
-      // Append the provider card to the DOM.
-      return providerCard;
-    }
-  
-    // This is a ist of the class used in the "providerCard" method:
-    // provider-card
-    // card-header
-    // card-header-title-row
-    // card-header-provider-title
-    // card-header-provider-first-name
-    // card-header-provider-last-name
-    // badge-icons-section
-    // card-header-specialties-row
-    // specialty-button
-    // specialty-name
-    // common-visit-reasons-row
-    // card-body-left-side
-    // card-body-right-side
-    // card-body
-    // location-group
-    // location
-    // fax
-    //////////////////////////
-  
+  get name() {
+    return this._name;
+  }
 
+  get path() {
+    return this._path;
+  }
+
+  get svg() {
+    return this._svg;
+  }
+
+  get icon() {
+    return this._icon;
+  }
+
+  static createIcon(name, path) {
+    return new Icon(name, path);
+  }
 }
 
 // Create Icon instances, and store them in variables. These variables will be used to create the provider cards. 
@@ -587,6 +86,1013 @@ const weightManagementIcon = Icon.createIcon("green", "M19 3H5c-1.1 0-2 .9-2 2v1
 const plasticSurgeryIcon = Icon.createIcon("green", "M12 19q0-2.5-1.75-4.25T6 13q0 2.5 1.75 4.25T12 19Zm0-5.05q.65 0 1.1-.45t.45-1.1v-.15q.2.15.412.225t.488.075q.65 0 1.1-.45T16 11q0-.5-.238-.875T15.1 9.6q.425-.15.663-.525T16 8.2q0-.65-.45-1.1t-1.1-.45q-.275 0-.487.075t-.413.225V6.8q0-.65-.45-1.1T12 5.25q-.65 0-1.1.45t-.45 1.1v.15q-.2-.15-.412-.225T9.55 6.65q-.65 0-1.1.45T8 8.2q0 .5.238.875T8.9 9.6q-.425.15-.662.525T8 11q0 .65.45 1.1t1.1.45q.275 0 .488-.075t.412-.225v.15q0 .65.45 1.1t1.1.45Zm0-2.8q-.65 0-1.1-.438T10.45 9.6q0-.65.45-1.1t1.1-.45q.65 0 1.1.45t.45 1.1q0 .675-.45 1.113t-1.1.437ZM12 19q2.5 0 4.25-1.75T18 13q-2.5 0-4.25 1.75T12 19Zm-8 3q-.825 0-1.413-.588T2 20V4q0-.825.588-1.413T4 2h16q.825 0 1.413.588T22 4v16q0 .825-.588 1.413T20 22H4Z");
 const vascularIcon = Icon.createIcon("green", "M4 24h10M44 8c-3.284.464-8.955 2.783-14.776 8.348C23.902 21.436 17.433 23.768 14 24m0 0c3.284.464 8.955 2.783 14.776 8.348C34.098 37.436 40.567 39.768 44 40");
 const generalSurgeryIcon = Icon.createIcon("green", "M12 19q0-2.5-1.75-4.25T6 13q0 2.5 1.75 4.25T12 19Zm0-5.05q.65 0 1.1-.45t.45-1.1v-.15q.2.15.412.225t.488.075q.65 0 1.1-.45T16 11q0-.5-.238-.875T15.1 9.6q.425-.15.663-.525T16 8.2q0-.65-.45-1.1t-1.1-.45q-.275 0-.487.075t-.413.225V6.8q0-.65-.45-1.1T12 5.25q-.65 0-1.1.45t-.45 1.1v.15q-.2-.15-.412-.225T9.55 6.65q-.65 0-1.1.45T8 8.2q0 .5.238.875T8.9 9.6q-.425.15-.662.525T8 11q0 .65.45 1.1t1.1.45q.275 0 .488-.075t.412-.225v.15q0 .65.45 1.1t1.1.45Zm0-2.8q-.65 0-1.1-.438T10.45 9.6q0-.65.45-1.1t1.1-.45q.65 0 1.1.45t.45 1.1q0 .675-.45 1.113t-1.1.437ZM12 19q2.5 0 4.25-1.75T18 13q-2.5 0-4.25 1.75T12 19Zm-8 3q-.825 0-1.413-.588T2 20V4q0-.825.588-1.413T4 2h16q.825 0 1.413.588T22 4v16q0 .825-.588 1.413T20 22H4Z");
+
+
+// Define a Provider class
+class Provider {
+  // Declare a static property `allProviders` to store all instances of the class
+  static allProviders = [];
+
+  // Specialty Map used to convert the specialty key to a human readable string
+  // also used to create the specialty icons
+  // also used to check the imported data for errors
+
+  //test specialty map
+  /*specialtyMapTest = {
+    "internalmedicine": { readableName: "Internal Medicine", icon: internalMedicineIcon.icon.cloneNode(true), comonVisitReasons: ["Annual Physical", "Internal Medicine Follow Up", "New Patient"] },
+    "gastroenterology": { readableName: "Gastroenterology", icon: gastroenterologyIcon.icon.cloneNode(true), comonVisitReasons: ["Colon Cancer Screening", "Colonoscopy Consultation"] },
+    "allergy": { readableName: "Allergy", icon: allergyIcon.icon.cloneNode(true), comonVisitReasons: ["Allergy Consultation", "Allergy Follow Up", "Allergy Shots"] },
+    "neurology": { readableName: "Neurology", icon: neurologyIcon.icon.cloneNode(true), comonVisitReasons: ["Neurology Consultation", "Neurology Follow Up"] },
+    "podiatry": { readableName: "Podiatry", icon: podiatryIcon.icon.cloneNode(true), comonVisitReasons: ["Foot Consultation", "Foot Follow Up"] },
+    "pulmonology": { readableName: "Pulmonology", icon: pulmonologyIcon.icon.cloneNode(true), comonVisitReasons: ["Pulmonary Function Testing", "Pulmonology Consultation", "Pulmonology Follow Up"] },
+    "physicaltherapy": { readableName: "Physical Therapy", icon: physicalTherapyIcon.icon.cloneNode(true), comonVisitReasons: ["Physical Therapy Consultation", "Physical Therapy Follow Up"] },
+    "endocrinology": { readableName: "Endocrinology", icon: endocrinologyIcon.icon.cloneNode(true), comonVisitReasons: ["Diabetes Consultation", "Diabetes Follow Up", "Endocrinology Consultation", "Endocrinology Follow Up"] },
+    "rheumatology": { readableName: "Rheumatology", icon: rheumatologyIcon.icon.cloneNode(true), comonVisitReasons: ["Arthritis", "Joint Pain", "Rheumatology Consultation", "Rheumatology Follow Up"] },
+    "cardiology": { readableName: "Cardiology", icon: cardiologyIcon.icon.cloneNode(true), comonVisitReasons: ["Cardiology Consultation", "Cardiology Follow Up", "Echocardiogram", "Stress Test"] },
+    "dermatology": { readableName: "Dermatology", icon: dermatologyIcon.icon.cloneNode(true), comonVisitReasons: ["Dermatology Consultation", "Dermatology Follow Up"] },
+    "nephrology": { readableName: "Nephrology", icon: nephrologyIcon.icon.cloneNode(true), comonVisitReasons: ["Kidney Stones", "Nephrology Consultation", "Nephrology Follow Up"] },
+    "vascular": { readableName: "Vascular", icon: vascularIcon.icon.cloneNode(true), comonVisitReasons: ["Vascular Consultation", "Vascular Follow Up"] },
+    "oncology": { readableName: "Oncology", icon: oncologyIcon.icon.cloneNode(true), comonVisitReasons: ["Oncology Consultation", "Oncology Follow Up"] },
+    "weightmanagement": { readableName: "Weight Management", icon: weightManagementIcon.icon.cloneNode(true), comonVisitReasons: ["Weight Loss Consultation", "Weight Loss Follow Up"] },
+    "orthopedics": { readableName: "Orthopedics", icon: orthopedicsIcon.icon.cloneNode(true), comonVisitReasons: ["Orthopedic Consultation", "Orthopedic Follow Up"] },
+    "urology": { readableName: "Urology", icon: urologyIcon.icon.cloneNode(true), comonVisitReasons: ["Urology Consultation", "Urology Follow Up"] },
+    "ophthalmology": { readableName: "Ophthalmology", icon: ophthalmologyIcon.icon.cloneNode(true), comonVisitReasons: ["Eye Consultation", "Eye Follow Up"] },
+  };
+  */
+
+  // Address Map used to convert the office key to a human readable string, which includes the address
+  // also used to check the imported data for errors
+  addressMap = {
+    "whiteplains": "210 Westchester Ave, White Plains, NY 10601",
+    "rye": "1 Theall Rd, Rye, NY 10580",
+    "purchase": "3030 Westchester ave, Purchase, NY 10577",
+    "yonkersbt": "1084 North Broadway, Yonkers, NY 10701",
+    "yonkersnr": "74 Market Street, Yonkers, NY 10701",
+  };
+
+  // Define a constructor method
+  constructor(firstName = "Julio César", lastName = "Correa", title = "Dr", gender = "male", specialty = ["physicaltherapy"], acceptsNewPatients = true, office = ["whiteplains"], fax = ["123456789"], emergencyLine = ["123"], languages = "english", insurances = [], onLeave = false, departing = false, departingDate, retired = false, ageGroup = "+18", importantInfo = "MISSING INFORMATION") {
+    // Assign the input values to the respective properties of the instance
+    this.firstName = firstName;
+    this.lastName = lastName;
+    this.title = title;
+    this.gender = gender;
+    this.specialty = specialty || [];
+    this.acceptsNewPatients = acceptsNewPatients;
+    this.office = office || [];
+    this.fax = fax || [];
+    this.emergencyLine = emergencyLine || [];
+    this.languages = languages;
+    this.insurances = insurances || [];
+    this.onLeave = onLeave;
+    this.departing = departing;
+    this.departingDate = departingDate;
+    this.retired = retired;
+    this.ageGroup = ageGroup;
+    this.importantInfo = importantInfo;
+
+    // // Data Compatibility Values
+    // this._firstNameCompatible = false;
+    // this._lastNameCompatible = false;
+    // this._titleCompatible = false;
+    // this._genderCompatible = false;
+    // this._specialtyCompatible = false;
+    // this._acceptsNewPatientsCompatible = false;
+    // this._officeCompatible = false;
+    // this._faxCompatible = false;
+    // this._emergencyLineCompatible = false;
+    // this._languagesCompatible = false;
+    // this._insurancesCompatible = false;
+    // this._onLeaveCompatible = false;
+    // this._departingCompatible = false;
+    // this._departingDateCompatible = false;
+    // this._retiredCompatible = false;
+    // this._ageGroupCompatible = false;
+    // this._importantInfoCompatible = false;
+
+    // Add the new instance to the `allProviders` array
+    Provider.allProviders.push(this);
+  }
+
+  // Gether Methods
+  // Getter for the firstName property
+  get firstName() {
+    return this._firstName;
+  }
+
+  // Getter for the lastName property
+  get lastName() {
+    return this._lastName;
+  }
+
+  // Getter for the office property
+  get office() {
+    return this._office;
+  }
+
+  // Getter for the specialty property
+  get specialty() {
+    return this._specialty;
+  }
+
+  // Getter for the title property
+  get title() {
+    return this._title;
+  }
+
+  // Getter for the acceptsNewPatients property
+  get acceptsNewPatients() {
+    return this._acceptsNewPatients;
+  }
+
+  // Getter for the onLeave property
+  get onLeave() {
+    return this._onLeave;
+  }
+
+  // Getter for the departing property
+  get departing() {
+    return this._departing;
+  }
+
+  // Getter for the departingDate property
+  get departingDate() {
+    return this._departingDate;
+  }
+
+  // Getter for the retired property
+  get retired() {
+    return this._retired;
+  }
+
+  // Getter for the insurances property
+  get insurances() {
+    return this._insurances;
+  }
+
+  // Getter for the gender property
+  get gender() {
+    return this._gender;
+  }
+
+  // Getter for the fax property
+  get fax() {
+    return this._fax;
+  }
+
+  // Getter for the languages property
+  get languages() {
+    return this._languages;
+  }
+
+  // Getter for the ageGroup property
+  get ageGroup() {
+    return this._ageGroup;
+  }
+
+  // Getter for the emergencyLine property
+  get emergencyLine() {
+    return this._emergencyLine;
+  }
+
+  // Getter for the importantInfo property
+  get importantInfo() {
+    return this._importantInfo;
+  }
+
+  // Getter for the relevanceScore property
+  get relevanceScore() {
+    return this._relevanceScore;
+  }
+
+  // Setter Methods
+  // Setter for the firstName property
+  set firstName(name) {
+    console.log("Setting firstName to " + name)
+    this._firstName = name;
+    if (isDataCompatible("firstName", name)) {
+      this._firstNameCompatible = true;
+    } else {
+      this._firstNameCompatible = false;
+    }
+  }
+
+  // Setter for the lastName property
+  set lastName(name) {
+    console.log("Setting lastName to " + name)
+    this._lastName = name;
+    if (isDataCompatible("lastName", name)) {
+      this._lastNameCompatible = true;
+    } else {
+      this._lastNameCompatible = false;
+    }
+  }
+
+  // Setter for the title property
+  set title(title) {
+    console.log("Setting title to " + title + " for " + this.firstName + " " + this.lastName)
+    this._title = title;
+    if (isDataCompatible("title", title)) {
+      this._titleCompatible = true;
+    } else {
+      this._titleCompatible = false;
+    }
+  }
+
+  // Setter for the gender property
+  set gender(gender) {
+    console.log("setting gender to " + gender + " for " + this.firstName + " " + this.lastName + "")
+    this._gender = gender;
+    if (isDataCompatible("gender", gender)) {
+      this._genderCompatible = true;
+    } else {
+      this._genderCompatible = false;
+    }
+  }
+
+  // Setter for the specialty property
+  set specialty(specialty) {
+    console.log("setting specialty to " + specialty + " for " + this.firstName + " " + this.lastName + "")
+    this._specialty = specialty;
+    if (isDataCompatible("specialty", specialty)) {
+      this._specialtyCompatible = true;
+    } else {
+      this._specialtyCompatible = false;
+    }
+  }
+
+  // Setter for the acceptsNewPatients property
+  set acceptsNewPatients(acceptsNewPatients) {
+    console.log("setting acceptsNewPatients to " + acceptsNewPatients + " for " + this.firstName + " " + this.lastName + "")
+    this._acceptsNewPatients = acceptsNewPatients;
+    if (isDataCompatible("acceptsNewPatients", acceptsNewPatients)) {
+      this._acceptsNewPatientsCompatible = true;
+    } else {
+      this._acceptsNewPatientsCompatible = false;
+    }
+  }
+
+  // Setter for the office property
+  set office(office) {
+    console.log("setting office to " + office + " for " + this.firstName + " " + this.lastName + "")
+    this._office = office;
+    if (isDataCompatible("office", office)) {
+      this._officeCompatible = true;
+    } else {
+      this._officeCompatible = false;
+    }
+  }
+
+  // Setter for the fax property
+  set fax(fax) {
+    console.log("setting fax to " + fax + " for " + this.firstName + " " + this.lastName + "")
+    this._fax = fax;
+    if (isDataCompatible("fax", fax)) {
+      this._faxCompatible = true;
+    } else {
+      this._faxCompatible = false;
+    }
+  }
+
+  // Setter for the emergencyLine property
+  set emergencyLine(emergencyLine) {
+    console.log("setting emergencyLine to " + emergencyLine + " for " + this.firstName + " " + this.lastName + "")
+    this._emergencyLine = emergencyLine;
+    if (isDataCompatible("emergencyLine", emergencyLine)) {
+      this._emergencyLineCompatible = true;
+    } else {
+      this._emergencyLineCompatible = false;
+    }
+  }
+
+  // Setter for the languages property
+  set languages(languages) {
+    console.log("setting languages to " + languages + " for " + this.firstName + " " + this.lastName + "")
+    this._languages = languages;
+    if (isDataCompatible("languages", languages)) {
+      this._languagesCompatible = true;
+    } else {
+      this._languagesCompatible = false;
+    }
+  }
+
+  // Setter for the insurances property
+  set insurances(insurances) {
+    console.log("setting insurances to " + insurances + " for " + this.firstName + " " + this.lastName + "")
+    this._insurances = insurances;
+    if (isDataCompatible("insurances", insurances)) {
+      this._insurancesCompatible = true;
+    } else {
+      this._insurancesCompatible = false;
+    }
+  }
+
+  // Setter for the onLeave property
+  set onLeave(onLeave) {
+    console.log("setting onLeave to " + onLeave + " for " + this.firstName + " " + this.lastName + "")
+    this._onLeave = onLeave;
+    if (isDataCompatible("onLeave", onLeave)) {
+      this._onLeaveCompatible = true;
+    } else {
+      this._onLeaveCompatible = false;
+    }
+  }
+
+  // Setter for the departing property
+  set departing(departing) {
+    console.log("setting departing to " + departing + " for " + this.firstName + " " + this.lastName + "")
+    this._departing = departing;
+    if (isDataCompatible("departing", departing)) {
+      this._departingCompatible = true;
+    } else {
+      this._departingCompatible = false;
+    }
+  }
+
+  // Setter for the departingDate property
+  set departingDate(departingDate) {
+    console.log("setting departingDate to " + departingDate + " for " + this.firstName + " " + this.lastName + "")
+    this._departingDate = departingDate;
+    if (isDataCompatible("departingDate", departingDate)) {
+      this._departingDateCompatible = true;
+    } else {
+      this._departingDateCompatible = false;
+    }
+  }
+
+  // Setter for the retired property
+  set retired(retired) {
+    console.log("setting retired to " + retired + " for " + this.firstName + " " + this.lastName + "")
+    this._retired = retired;
+    if (isDataCompatible("retired", retired)) {
+      this._retiredCompatible = true;
+    } else {
+      this._retiredCompatible = false;
+    }
+  }
+
+  // Setter for the ageGroup property
+  set ageGroup(ageGroup) {
+    console.log("setting ageGroup to " + ageGroup + " for " + this.firstName + " " + this.lastName + "")
+    this._ageGroup = ageGroup;
+    if (isDataCompatible("ageGroup", ageGroup)) {
+      this._ageGroupCompatible = true;
+    } else {
+      this._ageGroupCompatible = false;
+    }
+  }
+
+  // Setter for the importantInfo property
+  set importantInfo(importantInfo) {
+    console.log("setting importantInfo to " + importantInfo + " for " + this.firstName + " " + this.lastName + "")
+    this._importantInfo = importantInfo;
+    if (isDataCompatible("importantInfo", importantInfo)) {
+      this._importantInfoCompatible = true;
+    } else {
+      this._importantInfoCompatible = false;
+    }
+  }
+
+  // Setter for the relevanceScore property
+  set relevanceScore(score) {
+    this._relevanceScore = score;
+  }
+
+  static getAllProviders() {
+    return Provider.allProviders;
+  }
+
+  // Define a method getLanguages to return the languages spoken by the provider, with the first letter of each language capitalized
+  getLanguages() {
+    // Helper function to capitalize the first letter of a string
+    const capitalizeFirstLetter = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+    // Check if the _languages property is an array
+    if (Array.isArray(this._languages)) {
+      // Capitalize the first letter of each language and join them with commas
+      return this._languages.map(capitalizeFirstLetter).join(", ");
+    } else {
+      // Capitalize the first letter of the single language
+      return capitalizeFirstLetter(this._languages);
+    }
+  }
+
+  // Define a method getAgeGroup to return the age group of th e provider
+  getAgeGroup() {
+    const ageMap = {
+      "Adults": "+18",
+      "18": "+18",
+      "allages": "All Ages",
+    }
+
+    return ageMap[this.ageGroup] || this.ageGroup;
+  }
+
+  // Define a method getAddress to return the addresses of the provider's offices
+  getAddress() {
+    // Create a map of office names to their corresponding addresses
+    const addressMap = {
+      "whiteplains": "210 Westchester Ave, White Plains, NY 10601",
+      "rye": "1 Theall Rd, Rye, NY 10580",
+      "purchase": "3030 Westchester ave, Purchase, NY 10577",
+      "yonkersbt": "1084 North Broadway, Yonkers, NY 10701",
+      "yonkersnr": "74 Market Street, Yonkers, NY 10701",
+    };
+    // Map the provider's offices to their addresses using the addressMap
+    return this._office.map((office) => addressMap[office]);
+  }
+
+  // Icon Getters
+  // Define a method getGenderIcon to return the appropriate gender icon based on the provider's gender
+  getGenderIcon() {
+    // Check if the provider's gender is male
+    if (this._gender === "male") {
+      // Return a clone of the male icon
+      return maleIcon.icon.cloneNode(true);
+    } else if (this._gender === "female") {
+      // Return a clone of the female icon
+      return femaleIcon.icon.cloneNode(true);
+    } else {
+      // Return undefined if the gender is not male or female
+      return undefined;
+    }
+  }
+
+
+  // Define a method `getAcceptsNewPatientsIcon` to return the accepts new patients icon if the provider accepts new patients, and the not accepts new patients icon if the provider does not accept new patients.
+  getAcceptsNewPatientsIcon() {
+    if (this.acceptsNewPatients) {
+      return acceptsNewPatientsIcon.icon.cloneNode(true);
+    } else {
+      return notAcceptsNewPatientsIcon.icon.cloneNode(true);
+    }
+  }
+
+  // Define a method `getOnLeaveIcon` to return the on leave icon if the provider is on leave, and the not on leave icon if the provider is not on leave.
+  getOnLeaveIcon() {
+    if (this._onLeave) {
+      return onLeaveIcon.icon.cloneNode(true);
+    }
+  }
+
+  // Define a method `getAgeGroupIcon` to return the age group icon based on the age group of the provider.
+  getAgeGroupIcon() {
+    if (this._ageGroup === "+18") {
+      return overEighteenIcon.icon;
+    } else if (this._ageGroup === "+3") {
+      return overThreeIcon.icon.cloneNode(true);
+    }
+  }
+
+  // Define a method `getOnLeaveIcon` to return the on leave icon if the provider is on leave, and the not on leave icon if the provider is not on leave.
+  getOnLeaveIcon() {
+    return onLeaveIcon.icon.cloneNode(true);
+  }
+
+  // Define a method 'getRetiredIcon' to return the retired icon if the provider is retired, and the not retired icon if the provider is not retired.
+  getRetiredIcon() {
+    return retiredIcon.icon.cloneNode(true);
+  }
+
+  // Define a method `getDepartingIcon` to return the departing icon if the provider is departing, and the not departing icon if the provider is not departing.
+  getDepartingText() {
+    if (this._departing) {
+      let departingDateText = document.createElement("p");
+      departingDateText.classList.add("departing-date");
+      departingDateText.innerText = this._departingDate;
+      console.log(this._departingDate);
+      // departingIcon.icon.appendChild(departingDateText);
+
+      // return departingIcon.icon.cloneNode(true);
+      return departingDateText;
+    }
+  }
+
+  // Define a method `getSpecialtyIcon` to return the specialty icon based on the specialty of the provider.
+  getSpecialtyIcon() {
+    const specialtyMap = {
+      "internalmedicine": internalMedicineIcon.icon.cloneNode(true),
+      "gastroenterology": gastroenterologyIcon.icon.cloneNode(true),
+      "allergy": allergyIcon.icon.cloneNode(true),
+      "neurology": neurologyIcon.icon.cloneNode(true),
+      "podiatry": podiatryIcon.icon.cloneNode(true),
+      "pulmonology": pulmonologyIcon.icon.cloneNode(true),
+      "physicaltherapy": physicalTherapyIcon.icon.cloneNode(true),
+      "endocrinology": endocrinologyIcon.icon.cloneNode(true),
+      "rheumatology": rheumatologyIcon.icon.cloneNode(true),
+      "cardiology": cardiologyIcon.icon.cloneNode(true),
+      "dermatology": dermatologyIcon.icon.cloneNode(true),
+      "nephrology": nephrologyIcon.icon.cloneNode(true),
+      "vascular": vascularIcon.icon.cloneNode(true),
+      "oncology": oncologyIcon.icon.cloneNode(true),
+      "weightmanagement": weightManagementIcon.icon.cloneNode(true),
+      "orthopedics": orthopedicsIcon.icon.cloneNode(true),
+      "urology": urologyIcon.icon.cloneNode(true),
+      "ophthalmology": ophthalmologyIcon.icon.cloneNode(true),
+    }
+    let specialtyIcon = this.specialty.map(specialty => specialtyMap[specialty]);
+    return specialtyIcon;
+  }
+
+
+  // Define a method "getCommonVisitReasons" to return the common visit reasons of each specialty.
+  getCommonVisitReasons() {
+    const specialtyMap = {
+      "internalmedicine": "Common Visit Reasons: Cold, Flu, Fever, Cough, Sinus",
+      "gastroenterology": "Common Visit Reasons: Stomach Pain, Stomach Ulcer, Stomach Cancer, Stomach Bleeding, Stomach Infection, Stomach Flu, Stomach Virus, Stomach Bacteria, Stomach Parasite",
+      "allergy": "Common Visit Reasons: Allergy, Asthma, Sinus, Cold, Flu, Fever, Cough",
+      "neurology": "Common Visit Reasons: Headache, Migraine, Dizziness, Seizure, Stroke, Numbness, Tingling, Weakness",
+      "podiatry": "Common Visit Reasons: Foot Pain, Foot Injury, Foot Infection, Foot Ulcer, Foot Tumor, Foot Fracture, Foot Sprain, Foot Strain, Foot Arthritis, Foot Bursitis, Foot Tendonitis, Foot Tendonosis, Foot Tendinosis, Foot Tendinopathy",
+      "pulmonology": "Common Visit Reasons: Asthma, COPD, Emphysema, Bronchitis, Lung Cancer, Lung Infection",
+      "physicaltherapy": "Common Visit Reasons: Back Pain, Neck Pain, Shoulder Pain, Knee Pain, Ankle Pain, Foot Pain, Elbow Pain, Wrist Pain, Hand Pain, Hip Pain, Back Injury, Neck Injury, Shoulder Injury, Knee Injury, Ankle Injury, Foot Injury, Elbow Injury, Wrist Injury, Hand Injury, Hip Injury, Back Strain, Neck Strain, Shoulder Strain, Knee Strain, Ankle Strain, Foot Strain, Elbow Strain, Wrist Strain, Hand Strain, Hip Strain, Back Sprain, Neck Sprain, Shoulder Sprain, Knee Sprain, Ankle Sprain, Foot Sprain, Elbow Sprain, Wrist Sprain, Hand Sprain, Hip Sprain, Back Arthritis, Neck Arthritis, Shoulder Arthritis, Knee Arthritis, Ankle Arthritis, Foot Arthritis, Elbow Arthritis, Wrist Arthritis, Hand Arthritis, Hip Arthritis, Back Bursitis, Neck Bursitis, Shoulder Bursitis, Knee Bursitis, Ankle Bursitis, Foot Bursitis, Elbow Bursitis, Wrist Bursitis, Hand Bursitis, Hip Bursitis, Back Tendonitis, Neck Tendonitis, Shoulder Tendonitis, Knee Tendonitis, Ankle Tendonitis, Foot Tendonitis, Elbow Tendonitis, Wrist Tendonitis, Hand Tendonitis, Hip Tendonitis, Back Tendonosis, Neck Tendonosis, Shoulder Tendonosis, Knee Tendonosis, Ankle Tendonosis, Foot Tendonosis, Elbow Tendonosis, Wrist Tendonosis, Hand Tendonosis, Hip Tendonosis, Back Tendinosis, Neck Tendinosis, Shoulder Tendinosis, Knee Tendinosis, Ankle Tendinosis, Foot Tendinosis, Elbow Tendinosis, Wrist Tendinosis, Hand Tendinosis, Hip Tendinosis, Back Tendinopathy, Neck Tendinopathy, Shoulder Tendinopathy, Knee Tendinopathy, Ankle Tendinopathy, Foot Tendinopathy, Elbow Tendinopathy, Wrist Tendinopathy, Hand Tendinopathy, Hip Tendinopathy, Back Degeneration, Neck Degeneration, Shoulder Degeneration, Knee Degeneration",
+      "endocrinology": "Common Visit Reasons: Diabetes, Thyroid, Adrenal, Pituitary, Osteoporosis, Metabolic Syndrome, Obesity, Weight Management, Weight Loss, Weight Gain, Insulin Resistance, Insulin Deficiency, Insulin Overproduction",
+      "rheumatology": "Common Visit Reasons: Arthritis, Osteoarthritis, Rheumatoid Arthritis, Gout, Osteoporosis, Fibromyalgia, Lupus, Sjogren's, Scleroderma, Psoriatic Arthritis, Ankylosing Spondylitis, Polymyalgia Rheumatica, Vasculitis, Sarcoidosis, Spondyloarthritis, Systemic Lupus Erythematosus, Systemic Sclerosis",
+      "cardiology": "Common Visit Reasons: Heart Attack, Heart Failure",
+      "dermatology": "Common Visit Reasons: Acne, Eczema, Psoriasis, Rosacea, Skin Cancer, Skin Infection, Skin Tumor",
+      "nephrology": "Common Visit Reasons: Kidney Function Follow Up",
+      "vascular": "Common Visit Reasons: Varicose Veins, Peripheral Arterial Disease, Peripheral Vascular Disease, Carotid Artery Disease, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion, Carotid Artery Thrombosis, Carotid Artery Stenosis, Carotid Artery Blockage, Carotid Artery Aneurysm, Carotid Artery Dissection, Carotid Artery Occlusion",
+      "oncology": "Common Visit Reasons: Cancer Follow Up, Cancer Treatment Follow Up, Cancer Screening",
+      "weightmanagement": "lol no",
+      "orthopedics": "Common Visit Reasons: Knee Pain, Knee Injury, Knee Arthritis, Knee Replacement, Knee Surgery, Knee Sprain, Knee Strain, Knee Fracture, Knee Dislocation, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon Rupture, Knee Tendon Strain, Knee Tendon Sprain, Knee Tendonitis, Knee Bursitis, Knee Tendinitis, Knee Tendon Tear, Knee Tendon",
+      "urology": "Common Visit Reasons: Urology Consult, Urology Follow Up, Urology Screening, Urology Treatment, Urology Surge",
+      "ophthalmology": "Common Visit Reasons: Eye Exam, Eye Consult, Eye Follow Up, Eye Screening, Eye Treatment, Eye Surgery",
+    };
+
+    return this.specialty.map((specialty) => specialtyMap[specialty]);
+  }
+
+  // Define a static method `getSpecialtyName` to return the specialty name from the specialty code. 
+  getSpecialtyName() {
+    let specialtyMap = {
+      "internalmedicine": "Internal Medicine",
+      "gastroenterology": "Gastroenterology",
+      "allergy": "Allergy",
+      "neurology": "Neurology",
+      "podiatry": "Podiatry",
+      "pulmonology": "Pulmonology",
+      "physicaltherapy": "Physical Therapy",
+      "endocrinology": "Endocrinology",
+      "rheumatology": "Rheumatology",
+      "cardiology": "Cardiology",
+      "dermatology": "Dermatology",
+      "nephrology": "Nephrology",
+      "vascular": "Vascular",
+      "oncology": "Oncology",
+      "weightmanagement": "Weight Management",
+      "orthopedics": "Orthopedics",
+      "urology": "Urology",
+      "ophthalmology": "Ophthalmology"
+    };
+    return this.specialty.map((specialty) => specialtyMap[specialty]);
+  }
+
+  checkImportedData(type) {
+    const compatibleOfficeData = ["whiteplains", "rye", "purchase", "yonkersbt", "yonkersrh", "newrochelle"];
+    const compatibleSpecialtyData = ["internalmedicine", "gastroenterology", "allergy", "neurology", "podiatry", "pulmonology", "physicaltherapy", "endocrinology", "rheumatology", "cardiology", "dermatology", "nephrology", "vascular", "oncology", "weightmanagement", "orthopedics", "urology", "ophthalmology"];
+
+    console.log("Data type: " + type);
+    if (type === "office") {
+      console.log(this.office);
+      if (this.office.every((data) => compatibleOfficeData.includes(data))) {
+        return "-compatible";
+      } else {
+        console.log(`non-compatible: "${this.office}"`);
+        return "-non-compatible";
+      }
+    } else if (type === "specialty") {
+      console.log(this.specialty);
+      if (this.specialty.every((data) => compatibleSpecialtyData.includes(data))) {
+        return "-compatible";
+      } else {
+        console.log(`non-compatible: "${this.specialty}"`);
+        return "-non-compatible";
+      }
+    }
+  }
+
+
+  static providerTable(providers = this.allProviders) {
+    let providerTable = document.createElement("table");
+    providerTable.classList.add("provider-table");
+
+    // Create the table header
+    let providerTableHeader = document.createElement("tr");
+    providerTableHeader.classList.add("provider-table-header");
+
+    // Create Table Caption
+    let providerTableCaption = document.createElement("caption");
+    providerTableCaption.classList.add("provider-table-caption");
+    providerTableCaption.textContent = "Provider Data Preview";
+    providerTable.appendChild(providerTableCaption);
+
+    // First Name
+    let providerTableHeaderFirstName = document.createElement("th");
+    providerTableHeaderFirstName.classList.add("provider-table-header-first-name");
+    providerTableHeaderFirstName.textContent = "First Name";
+
+    // Last Name
+    let providerTableHeaderLastName = document.createElement("th");
+    providerTableHeaderLastName.classList.add("provider-table-header-last-name");
+    providerTableHeaderLastName.textContent = "Last Name";
+
+    // Title
+    let providerTableHeaderTitle = document.createElement("th");
+    providerTableHeaderTitle.classList.add("provider-table-header-title");
+    providerTableHeaderTitle.textContent = "Title";
+
+    // Gender 
+    let providerTableHeaderGender = document.createElement("th");
+    providerTableHeaderGender.classList.add("provider-table-header-gender");
+    providerTableHeaderGender.textContent = "Gender";
+
+    // Specialty
+    let providerTableHeaderSpecialty = document.createElement("th");
+    providerTableHeaderSpecialty.classList.add("provider-table-header-specialty");
+    providerTableHeaderSpecialty.textContent = "Specialty";
+
+    // Acceptance
+    let providerTableHeaderAcceptance = document.createElement("th");
+    providerTableHeaderAcceptance.classList.add("provider-table-header-acceptance");
+    providerTableHeaderAcceptance.textContent = "Accepts New Patients";
+
+    // Location
+    let providerTableHeaderOffice = document.createElement("th");
+    providerTableHeaderOffice.classList.add("provider-table-header-office");
+    providerTableHeaderOffice.textContent = "Office";
+
+    // Fax
+    let providerTableHeaderFax = document.createElement("th");
+    providerTableHeaderFax.classList.add("provider-table-header-fax");
+    providerTableHeaderFax.textContent = "Fax";
+
+    // Emeregency Line
+    let providerTableHeaderEmergency = document.createElement("th");
+    providerTableHeaderEmergency.classList.add("provider-table-header-emergency");
+    providerTableHeaderEmergency.textContent = "Emergency Line";
+
+    // Language
+    let providerTableHeaderLanguage = document.createElement("th");
+    providerTableHeaderLanguage.classList.add("provider-table-header-language");
+    providerTableHeaderLanguage.textContent = "Languages";
+
+    // Insurances
+    let providerTableHeaderInsurances = document.createElement("th");
+    providerTableHeaderInsurances.classList.add("provider-table-header-insurances");
+    providerTableHeaderInsurances.textContent = "Insurances";
+
+    // On Leave
+    let providerTableHeaderOnLeave = document.createElement("th");
+    providerTableHeaderOnLeave.classList.add("provider-table-header-on-leave");
+    providerTableHeaderOnLeave.textContent = "On Leave";
+
+    // Departing
+    let providerTableHeaderDeparting = document.createElement("th");
+    providerTableHeaderDeparting.classList.add("provider-table-header-departing");
+    providerTableHeaderDeparting.textContent = "Departing";
+
+    // Departing Date
+    let providerTableHeaderDepartingDate = document.createElement("th");
+    providerTableHeaderDepartingDate.classList.add("provider-table-header-departing-date");
+    providerTableHeaderDepartingDate.textContent = "Departing Date";
+
+    // Retired
+    let providerTableHeaderRetired = document.createElement("th");
+    providerTableHeaderRetired.classList.add("provider-table-header-retired");
+    providerTableHeaderRetired.textContent = "Retired";
+
+    // Age Group
+    let providerTableHeaderAgeGroup = document.createElement("th");
+    providerTableHeaderAgeGroup.classList.add("provider-table-header-age-group");
+    providerTableHeaderAgeGroup.textContent = "Age Group";
+
+    // Important Information
+    let providerTableHeaderImportantInformation = document.createElement("th");
+    providerTableHeaderImportantInformation.classList.add("provider-table-header-important-information");
+    providerTableHeaderImportantInformation.textContent = "Important Information";
+
+    // Availability
+    let providerTableHeaderAvailability = document.createElement("th");
+    providerTableHeaderAvailability.classList.add("provider-table-header-availability");
+    providerTableHeaderAvailability.textContent = "Availability";
+
+    providerTableHeader.appendChild(providerTableHeaderFirstName);
+    providerTableHeader.appendChild(providerTableHeaderLastName);
+    providerTableHeader.appendChild(providerTableHeaderTitle);
+    providerTableHeader.appendChild(providerTableHeaderGender);
+    providerTableHeader.appendChild(providerTableHeaderSpecialty);
+    providerTableHeader.appendChild(providerTableHeaderAcceptance);
+    providerTableHeader.appendChild(providerTableHeaderOffice);
+    providerTableHeader.appendChild(providerTableHeaderFax);
+    providerTableHeader.appendChild(providerTableHeaderEmergency);
+    providerTableHeader.appendChild(providerTableHeaderLanguage);
+    providerTableHeader.appendChild(providerTableHeaderInsurances);
+    providerTableHeader.appendChild(providerTableHeaderOnLeave);
+    providerTableHeader.appendChild(providerTableHeaderDeparting);
+    providerTableHeader.appendChild(providerTableHeaderDepartingDate);
+    providerTableHeader.appendChild(providerTableHeaderRetired);
+    providerTableHeader.appendChild(providerTableHeaderAgeGroup);
+    providerTableHeader.appendChild(providerTableHeaderImportantInformation);
+    providerTableHeader.appendChild(providerTableHeaderAvailability);
+    providerTable.appendChild(providerTableHeader);
+
+    providers.forEach((provider) => {
+      providerTable.appendChild(provider.providerTableRow());
+    });
+    return providerTable;
+  }
+
+  providerTableRow() {
+    let providerTableRow = document.createElement("tr");
+    providerTableRow.classList.add("provider-table-row");
+
+    let providerTableRowFirstName = document.createElement("td");
+    providerTableRowFirstName.classList.add(`provider-table-row-cell${setClassSuffix(this._firstNameCompatible)}`);
+    providerTableRowFirstName.textContent = this.firstName;
+
+    let providerTableRowLastName = document.createElement("td");
+    providerTableRowLastName.classList.add(`provider-table-row-cell${setClassSuffix(this._lastNameCompatible)}`);
+    providerTableRowLastName.textContent = this.lastName;
+
+
+    let providerTableRowTitle = document.createElement("td");
+    providerTableRowTitle.classList.add(`provider-table-row-cell${setClassSuffix(this._titleCompatible)}`);
+    providerTableRowTitle.textContent = this.title;
+
+    let providerTableRowGender = document.createElement("td");
+    providerTableRowGender.classList.add(`provider-table-row-cell${setClassSuffix(this._genderCompatible)}`);
+    providerTableRowGender.textContent = this.gender;
+
+    let providerTableRowSpecialty = document.createElement("td");
+    console.log("This specialty: " + this.specialty)
+    providerTableRowSpecialty.classList.add(`provider-table-row-cell${setClassSuffix(this._specialtyCompatible)}`);
+    providerTableRowSpecialty.textContent = this.specialty;
+
+    let providerTableRowAcceptance = document.createElement("td");
+    providerTableRowAcceptance.classList.add("provider-table-row-cell");
+    providerTableRowAcceptance.textContent = this.acceptsNewPatients;
+
+    let providerTableRowOffice = document.createElement("td");
+    // providerTableRowOffice.classList.add("provider-table-row-office");
+    providerTableRowOffice.classList.add(`provider-table-row-cell${setClassSuffix(this._officeCompatible)}`);
+    providerTableRowOffice.textContent = this.office;
+
+    let providerTableRowFax = document.createElement("td");
+    providerTableRowFax.classList.add(`provider-table-row-cell${setClassSuffix(this._faxCompatible)}`);
+    providerTableRowFax.textContent = this.fax;
+
+    let providerTableRowEmergency = document.createElement("td");
+    providerTableRowEmergency.classList.add(`provider-table-row-cell${setClassSuffix(this._emergencyLineCompatible)}`);
+    providerTableRowEmergency.textContent = this.emergencyLine;
+
+    let providerTableRowLanguages = document.createElement("td");
+    providerTableRowLanguages.classList.add(`provider-table-row-cell${setClassSuffix(this._languagesCompatible)}`);
+    providerTableRowLanguages.textContent = this.languages;
+
+    let providerTableRowInsurances = document.createElement("td");
+    providerTableRowInsurances.classList.add(`provider-table-row-cell${setClassSuffix(this._insurancesCompatible)}`);
+    providerTableRowInsurances.textContent = this.insurances;
+
+    let providerTableRowOnLeave = document.createElement("td");
+    providerTableRowOnLeave.classList.add(`provider-table-row-cell${setClassSuffix(this._onLeaveCompatible)}`);
+    providerTableRowOnLeave.textContent = this.onLeave;
+
+    let providerTableRowDeparting = document.createElement("td");
+    providerTableRowDeparting.classList.add(`provider-table-row-cell${setClassSuffix(this._departingCompatible)}`);
+    providerTableRowDeparting.textContent = this.departing;
+
+    let providerTableRowDepartingDate = document.createElement("td");
+    providerTableRowDepartingDate.classList.add(`provider-table-row-cell${setClassSuffix(this._departingDateCompatible)}`);
+    providerTableRowDepartingDate.textContent = this.departingDate;
+
+    let providerTableRowRetired = document.createElement("td");
+    providerTableRowRetired.classList.add(`provider-table-row-cell${setClassSuffix(this._retiredCompatible)}`);
+    providerTableRowRetired.textContent = this.retired;
+
+    let providerTableRowAgeGroup = document.createElement("td");
+    providerTableRowAgeGroup.classList.add(`provider-table-row-cell${setClassSuffix(this._ageGroupCompatible)}`);
+    providerTableRowAgeGroup.textContent = this.ageGroup;
+
+    let providerTableRowImportantInformation = document.createElement("td");
+    providerTableRowImportantInformation.classList.add(`provider-table-row-cell${setClassSuffix(this._importantInfoCompatible)}`);
+    providerTableRowImportantInformation.textContent = this.importantInfo;
+
+    let providerTableRowAvailability = document.createElement("td");
+    providerTableRowAvailability.classList.add(`provider-table-row-cell${setClassSuffix(this._availabilityCompatible)}`);
+    providerTableRowAvailability.textContent = this.availability;
+
+    providerTableRow.appendChild(providerTableRowFirstName);
+    providerTableRow.appendChild(providerTableRowLastName);
+    providerTableRow.appendChild(providerTableRowTitle);
+    providerTableRow.appendChild(providerTableRowGender);
+    providerTableRow.appendChild(providerTableRowSpecialty);
+    providerTableRow.appendChild(providerTableRowAcceptance);
+    providerTableRow.appendChild(providerTableRowOffice);
+    providerTableRow.appendChild(providerTableRowFax);
+    providerTableRow.appendChild(providerTableRowEmergency);
+    providerTableRow.appendChild(providerTableRowLanguages);
+    providerTableRow.appendChild(providerTableRowInsurances);
+    providerTableRow.appendChild(providerTableRowOnLeave);
+    providerTableRow.appendChild(providerTableRowDeparting);
+    providerTableRow.appendChild(providerTableRowDepartingDate);
+    providerTableRow.appendChild(providerTableRowRetired);
+    providerTableRow.appendChild(providerTableRowAgeGroup);
+    providerTableRow.appendChild(providerTableRowImportantInformation);
+    providerTableRow.appendChild(providerTableRowAvailability);
+
+    return providerTableRow;
+  }
+
+  // Define a method `createProviderCard` to create a provider card, and append it to the DOM, using the data from the instance. This method should be called in the `displaySearchResults` function.
+  providerCard() {
+    // Create a div element with the class `provider-card`.
+    let providerCard = document.createElement("div");
+    providerCard.classList.add("provider-card");
+
+    // Create a div element with the class `card-header`.
+    let cardHeader = document.createElement("div");
+    cardHeader.classList.add("card-header");
+
+    // Create a div element with the class `card-header-title-row`.
+    let cardHeaderTitleRow = document.createElement("div");
+    cardHeaderTitleRow.classList.add("card-header-title-row");
+    cardHeader.appendChild(cardHeaderTitleRow);
+
+    // Append the gender icon to the card header title row.
+    cardHeaderTitleRow.appendChild(this.getGenderIcon());
+
+    // Create a h1 element with the class `card-header-provider-title`.
+    let cardHeaderProviderTitle = document.createElement("h1");
+    cardHeaderProviderTitle.classList.add("card-header-provider-title");
+    cardHeaderProviderTitle.textContent = this.title;
+    cardHeaderTitleRow.appendChild(cardHeaderProviderTitle);
+
+    // Create a h1 element with the class `card-header-provider-first-name`.
+    let cardHeaderProviderFirstName = document.createElement("h1");
+    cardHeaderProviderFirstName.classList.add("card-header-provider-first-name");
+    cardHeaderProviderFirstName.textContent = this.firstName;
+    cardHeaderTitleRow.appendChild(cardHeaderProviderFirstName);
+
+    // Create a h1 element with the class `card-header-provider-last-name`.
+    let cardHeaderProviderLastName = document.createElement("h1");
+    cardHeaderProviderLastName.classList.add("card-header-provider-last-name");
+    cardHeaderProviderLastName.textContent = this.lastName;
+    cardHeaderTitleRow.appendChild(cardHeaderProviderLastName);
+
+    // Create a div for the provider's languages.
+    let providerLanguage = document.createElement("div");
+    providerLanguage.classList.add("provider-language");
+    providerLanguage.appendChild(languageIcon.icon.cloneNode(true));
+
+    let providerLanguageText = document.createElement("p");
+    providerLanguageText.classList.add("provider-language-text");
+    providerLanguageText.textContent = this.getLanguages();
+
+    providerLanguage.appendChild(providerLanguageText);
+    cardHeaderTitleRow.appendChild(providerLanguage);
+
+    // Create a div for the provider's Age Group
+    let cardHeaderProviderAgeGroup = document.createElement("h2");
+    cardHeaderProviderAgeGroup.classList.add("age-group");
+    cardHeaderProviderAgeGroup.textContent = this.getAgeGroup();
+    cardHeaderTitleRow.appendChild(cardHeaderProviderAgeGroup);
+
+    // Create a div element containing the provider's Badge Icons.
+    let badgeIconsSection = document.createElement("div");
+    badgeIconsSection.classList.add("badge-icons-section");
+    badgeIconsSection.appendChild(this.getAcceptsNewPatientsIcon());
+    this.onLeave ? badgeIconsSection.appendChild(this.getOnLeaveIcon()) : null;
+    this.departing ? badgeIconsSection.appendChild(departingIcon.icon) : null;
+    this.departing ? badgeIconsSection.appendChild(this.getDepartingText()) : null;
+    this.retired ? badgeIconsSection.appendChild(this.getRetiredIcon()) : null;
+    this.insurances.includes("workerscomp") ? badgeIconsSection.appendChild(workersCompIcon.icon.cloneNode(true)) : null;
+    cardHeaderTitleRow.appendChild(badgeIconsSection);
+
+    // Create a div element with the class `card-header-specialties-row`.
+    let CardHeaderSpecialtiesRow = document.createElement("div");
+    CardHeaderSpecialtiesRow.classList.add("card-header-specialties-row");
+    cardHeader.appendChild(CardHeaderSpecialtiesRow);
+
+    // Create a button for each provider's specialty. The button contains the specialty icon, and the specialty name.
+    this.specialty.forEach((specialty, index) => {
+      let specialtyButton = document.createElement("button");
+      specialtyButton.classList.add("specialty-button");
+      specialtyButton.appendChild(this.getSpecialtyIcon()[index]);
+
+      // Create a span element with the class `specialty-name`.
+      let specialtyName = document.createElement("span");
+      specialtyName.classList.add("specialty-name");
+      specialtyName.textContent = this.getSpecialtyName()[index];
+      specialtyButton.appendChild(specialtyName);
+
+      CardHeaderSpecialtiesRow.appendChild(specialtyButton);
+    });
+
+    // Create a div for the Common Visit Reasons row. This row contains the common visit reasons for the specialty selected in the specialty row.
+    let commonVisitReasonsRow = document.createElement("div");
+    commonVisitReasonsRow.classList.add("common-visit-reasons-row");
+    this.specialty.forEach((specialty, index) => {
+      let commotVisitReasonParagraph = document.createElement("p");
+      commotVisitReasonParagraph.classList.add("common-visit-reasons-paragraph");
+      commotVisitReasonParagraph.textContent = this.getCommonVisitReasons()[index];
+
+      commonVisitReasonsRow.appendChild(commotVisitReasonParagraph);
+      cardHeader.appendChild(commonVisitReasonsRow);
+    });
+
+    // Create a div for the "important information" row. This row contains the important information for the provider.
+    if (this.importantInfo !== "none" && this.importantInfo !== "") {
+      let importantInfoRow = document.createElement("div");
+      importantInfoRow.classList.add("important-info-row");
+      importantInfoRow.appendChild(importantIcon.icon.cloneNode(true));
+
+
+      let importantInfo = document.createElement("p");
+      importantInfo.textContent = this.importantInfo;
+      importantInfo.classList.add("important-info");
+      importantInfoRow.appendChild(importantInfo);
+      cardHeader.appendChild(importantInfoRow);
+
+    };
+
+    // Create a div element with the class `card-body`.
+    let cardBody = document.createElement("div");
+    cardBody.classList.add("card-body");
+
+    // Create a left side for the card body.
+    let cardBodyLeftSide = document.createElement("div");
+    cardBodyLeftSide.classList.add("card-body-left-side");
+
+    // Create a right side for the card body.
+    let cardBodyRightSide = document.createElement("div");
+    cardBodyRightSide.classList.add("card-body-right-side");
+
+
+
+    this.office.forEach((office, index) => {
+      // Create a div that contains the provider's address, with the respective fax number.
+      let locationGroup = document.createElement("div");
+      locationGroup.classList.add("location-group");
+
+      locationGroup.appendChild(officeIcon.icon.cloneNode(true))
+
+      let location = document.createElement("p");
+      location.classList.add("location");
+      // location.textContent = this.office[index];
+      location.textContent = this.getAddress()[index];
+      locationGroup.appendChild(location);
+
+      locationGroup.appendChild(faxIcon.icon.cloneNode(true));
+
+      let fax = document.createElement("p");
+      fax.classList.add("fax");
+      fax.textContent = this.fax[index];
+      locationGroup.appendChild(fax);
+
+      locationGroup.appendChild(emergencyLineIcon.icon.cloneNode(true));
+
+      let emergencyLine = document.createElement("p");
+      emergencyLine.classList.add("emergency-line");
+      emergencyLine.textContent = this.emergencyLine[index];
+      locationGroup.appendChild(emergencyLine);
+
+      cardBody.appendChild(locationGroup);
+    });
+
+
+
+    // Append the card header to the provider card.
+    providerCard.appendChild(cardHeader);
+
+    // Append the card body to the provider card.
+    providerCard.appendChild(cardBody);
+
+    // Append the provider card to the DOM.
+    return providerCard;
+  }
+
+  // This is a ist of the class used in the "providerCard" method:
+  // provider-card
+  // card-header
+  // card-header-title-row
+  // card-header-provider-title
+  // card-header-provider-first-name
+  // card-header-provider-last-name
+  // badge-icons-section
+  // card-header-specialties-row
+  // specialty-button
+  // specialty-name
+  // common-visit-reasons-row
+  // card-body-left-side
+  // card-body-right-side
+  // card-body
+  // location-group
+  // location
+  // fax
+  //////////////////////////
+
+
+}
+
 
 
 export { Provider };
