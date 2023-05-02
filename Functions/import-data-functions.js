@@ -180,17 +180,7 @@ export function isDataCompatible(type, values) {
                 break;
 
             case "fax":
-                if (typeof value !== "string") {
-                    console.log("The fax must be a string");
-                    errors++;
-                } else if (value.length === 0) {
-                    console.log("The fax must not be empty");
-                    errors++;
-                } else if (value.length > 50) {
-                    console.log("The fax must not be longer than 50 characters");
-                    errors++;
-                } else if (!/^[0-9\s]*$/.test(value)) {
-                    console.log("The fax must only contain numbers and spaces");
+                if (checkForMissinput(value, type)) {
                     errors++;
                 } else {
                     console.log(`${type} is compatible with value ${value}`)
@@ -198,17 +188,7 @@ export function isDataCompatible(type, values) {
                 break;
 
             case "emergencyLine":
-                if (typeof value !== "string") {
-                    console.log("The emergencyLine must be a string");
-                    errors++;
-                } else if (value.length === 0) {
-                    console.log("The emergencyLine must not be empty");
-                    errors++;
-                } else if (value.length > 50) {
-                    console.log("The emergencyLine must not be longer than 50 characters");
-                    errors++;
-                } else if (!/^[0-9\s]*$/.test(value)) {
-                    console.log("The emergencyLine must only contain numbers and spaces");
+                if (checkForMissinput(value, type)) {
                     errors++;
                 } else {
                     console.log(`${type} is compatible with value ${value}`)
@@ -216,17 +196,7 @@ export function isDataCompatible(type, values) {
                 break;
 
             case "languages":
-                if (typeof value !== "string") {
-                    console.log("The languages must be a string");
-                    errors++;
-                } else if (value.length === 0) {
-                    console.log("The languages must not be empty");
-                    errors++;
-                } else if (value.length > 50) {
-                    console.log("The languages must not be longer than 50 characters");
-                    errors++;
-                } else if (!/^[a-zA-Z\s]*$/.test(value)) {
-                    console.log("The languages must only contain letters and spaces");
+                if (checkForMissinput(value, type)) {
                     errors++;
                 } else {
                     console.log(`${type} is compatible with value ${value}`)
@@ -234,17 +204,7 @@ export function isDataCompatible(type, values) {
                 break;
 
             case "insurances":
-                if (typeof value !== "string") {
-                    console.log("The insurances must be a string");
-                    errors++;
-                } else if (value.length === 0) {
-                    console.log("The insurances must not be empty");
-                    errors++;
-                } else if (value.length > 50) {
-                    console.log("The insurances must not be longer than 50 characters");
-                    errors++;
-                } else if (!/^[a-zA-Z\s]*$/.test(value)) {
-                    console.log("The insurances must only contain letters and spaces");
+                if (checkForMissinput(value, type)) {
                     errors++;
                 } else {
                     console.log(`${type} is compatible with value ${value}`)
@@ -270,17 +230,7 @@ export function isDataCompatible(type, values) {
                 break;
 
             case "departingDate":
-                if (typeof value !== "string") {
-                    console.log("The departingDate must be a string");
-                    errors++;
-                } else if (value.length === 0) {
-                    console.log("The departingDate must not be empty");
-                    errors++;
-                } else if (value.length > 50) {
-                    console.log("The departingDate must not be longer than 50 characters");
-                    errors++;
-                } else if (!/^[0-9\s]*$/.test(value)) {
-                    console.log("The departingDate must only contain numbers and spaces");
+                if (checkForMissinput(value, type)) {
                     errors++;
                 } else {
                     console.log(`${type} is compatible with value ${value}`)
@@ -297,17 +247,7 @@ export function isDataCompatible(type, values) {
                 break;
 
             case "ageGroup":
-                if (typeof value !== "string") {
-                    console.log("The ageGroup must be a string");
-                    errors++;
-                } else if (value.length === 0) {
-                    console.log("The ageGroup must not be empty");
-                    errors++;
-                } else if (value.length > 50) {
-                    console.log("The ageGroup must not be longer than 50 characters");
-                    errors++;
-                } else if (!/^[a-zA-Z\s]*$/.test(value)) {
-                    console.log("The ageGroup must only contain letters and spaces");
+                if (checkForMissinput(value, type)) {
                     errors++;
                 } else {
                     console.log(`${type} is compatible with value ${value}`)

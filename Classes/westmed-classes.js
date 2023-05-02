@@ -150,6 +150,7 @@ class Provider {
     this.retired = retired;
     this.ageGroup = ageGroup;
     this.importantInfo = importantInfo;
+    this._errors;
 
     // // Data Compatibility Values
     // this._firstNameCompatible = false;
@@ -265,6 +266,11 @@ class Provider {
     return this._relevanceScore;
   }
 
+  // Getter for the errors property
+  get errors() {
+    return this._errors;
+  }
+
   // Setter Methods
   // Setter for the firstName property
   set firstName(name) {
@@ -302,7 +308,7 @@ class Provider {
   // Setter for the gender property
   set gender(gender) {
     console.log("setting gender to " + gender + " for " + this.firstName + " " + this.lastName + "")
-    this._gender = gender;
+    this._gender = gender[0];
     if (isDataCompatible("gender", gender)) {
       this._genderCompatible = true;
     } else {
@@ -458,6 +464,11 @@ class Provider {
     this._relevanceScore = score;
   }
 
+  // Setter for the error property
+  set errors(error) {
+    this._errors = error;
+  }
+
   static getAllProviders() {
     return Provider.allProviders;
   }
@@ -590,6 +601,7 @@ class Provider {
       "urology": urologyIcon.icon.cloneNode(true),
       "ophthalmology": ophthalmologyIcon.icon.cloneNode(true),
     }
+    console.log(`This is the specialty ${this.specialty}`)
     let specialtyIcon = this.specialty.map(specialty => specialtyMap[specialty]);
     return specialtyIcon;
   }
@@ -672,6 +684,10 @@ class Provider {
 
 
   static providerTable(providers = this.allProviders) {
+    
+    // Create error counter
+
+    // Create the table
     let providerTable = document.createElement("table");
     providerTable.classList.add("provider-table");
 

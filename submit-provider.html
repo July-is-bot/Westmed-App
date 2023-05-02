@@ -9,14 +9,21 @@
 </head>
 
 <body>
-    <div class="form-container">
-        <h1>Upload Excel Sheet</h1>
-        <p>Select an Excel file to import provider data:</p>
-        <label>File Input:<input type="file" id="file-input" name="file-input" accept=".xls,.xlsx" /></label>
-        
-    </div>
+    <section>
+        <div class="form-container">
+            <h1>Upload Excel Sheet</h1>
+            <p>Select an Excel file to import provider data:</p>
+            <label>File Input:<input type="file" id="file-input" name="file-input" accept=".csv" /></label>
+        </div>
+    </section>
+    <section>
+        <div id="import-preview">
+
+        </div>
+    </section>
+
     <p>&copy; 2023 Julio Cesar Correa Vasquez</p>
-    <!-- <script src="script-reworked.js"></script> -->
+    <script type = "module" src="submit-provider-script.js"></script>
     <!-- <script src="path/to/xlsx.full.min.js"></script> -->
 </body>
 
