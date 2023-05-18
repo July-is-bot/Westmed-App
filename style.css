@@ -1,0 +1,202 @@
+:root {
+    --main-color: hsl(203, 95%, 23%);
+    --light-main-color: hsl(203, 100%, 75%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    background-color: var(--main-color);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: white;
+    font-size: 2rem;
+}
+
+p {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;    
+}
+
+#search-query {
+    width: 100%;
+    height: 1.5rem;
+    background: hsl(203, 29%, 90%);
+    margin-bottom: 15px;
+}
+
+.search-form label {
+    margin-right: 5px;
+}
+
+.search-form input,
+.search-form select {
+    padding: 5px;
+}
+ 
+.form-checkbox-wrap {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.form-dropdown-wrap {
+    margin: 0.5rem;
+}
+
+button {
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    margin-left: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+.provider-card {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 20px;
+    border-bottom: black solid 1px;
+}
+
+.age-group {
+  color: green;
+  font-size: 1rem;
+}
+
+
+.provider-card h2 {
+    margin: 0 0 10px;
+}
+
+
+.information-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #d0d0d0;
+    flex-direction: column;
+}
+
+.location-row {
+    display: flex;
+    gap: 1rem;
+}
+
+.fax-row {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.important-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: #f1f1f1;
+    height: 100%;
+    border: 1px solid #ff1e00;
+}
+
+.card-header {
+    display: flex;
+    flex-direction: column;
+}
+
+.header-row-one {
+    display: flex;
+    gap: 0.4rem;
+}
+
+.header-row-two {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.specialty {
+  padding: 0;
+  display: flex;
+  flex-grow: 1;
+  gap: 0.5rem;
+  border: var(--main-color) 1px solid;
+  border-radius: 8px;
+  align-items: center;
+  background-color: #e0d9d9;
+}
+
+.specialty:hover {
+  cursor: pointer;
+  background: linear-gradient(to top, var(--light-main-color), #d7d7d7 10%);
+}
+
+.header-row-three {
+    display: flex;
+    width: 100%;
+    gap: 0.5rem;
+    margin-bottom: 10px;
+}
+
+.common-symptoms {
+    display: flex;
+    margin: 20px 0;
+    padding: 0.7rem;
+    border: black 1px solid;
+    border-radius: 8px;
+}
+
+.open {
+  display: flex;
+}
+
+.location-information {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  /* align-items: center; */
+}
+.fax-information {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    /* align-items: center; */
+  }
+

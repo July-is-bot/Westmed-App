@@ -1,0 +1,394 @@
+/* 
+  // This is a ist of the class used in the "providerCard" method:
+  // provider-card
+  // card-header
+  // card-header-title-row
+  // card-header-provider-title
+  // card-header-provider-first-name
+  // card-header-provider-last-name
+  // badge-icons-section
+  // card-header-specialties-row
+  // specialty-button
+  // specialty-name
+  // common-visit-reasons-row
+  // card-body-left-side
+  // card-body-right-side
+  // card-body
+  // location-group
+  // location
+  // fax
+  //////////////////////////
+
+*/
+
+:root {
+    --main-color: hsl(203, 95%, 23%);
+    --light-main-color: hsl(203, 100%, 75%);
+    --main-gray: hsl(203, 29%, 90%);
+    --main-gray-dark: hsl(203, 29%, 80%);
+    --main-gray-darker: hsl(203, 29%, 70%);
+    --main-gray-darkest: hsl(203, 29%, 60%);
+    --main-gray-light: hsl(203, 29%, 95%);
+    --main-gray-lighter: hsl(203, 29%, 97%);
+    --main-gray-lightest: hsl(203, 29%, 99%);
+}
+
+
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    /* font-family: Arial, sans-serif; */
+    margin: 0;
+    padding: 0;
+    background-color: var(--main-gray-lighter);
+}
+
+header {
+    background-color: var(--main-color);
+    padding: 20px;
+    text-align: center;
+}
+
+h1 {
+    color: rgb(0, 0, 0);
+    font-size: 2rem;
+    margin: 0;
+}
+
+.page-title {
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+main {
+    padding: 20px;
+}
+
+.search-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 50px;
+}
+
+#search-query {
+    width: 100%;
+    height: 1.5rem;
+    background: hsl(203, 29%, 90%);
+    margin-bottom: 15px;
+}
+
+.search-form label {
+    margin-right: 5px;
+}
+
+.search-form input,
+.search-form select {
+    padding: 5px;
+}
+
+.form-checkbox-wrap {
+    width: 100%;
+    margin: 0.5rem 0;
+}
+
+.form-dropdown-wrap {
+    margin: 0.5rem;
+}
+
+button {
+    background-color: var(--main-color);
+    border: none;
+    color: white;
+    cursor: pointer;
+    padding: 10px 20px;
+    /* margin-left: auto; */
+    /* margin-top: 15px; */
+    /* margin-bottom: 15px; */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+.search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.provider-card {
+    background-color: var(--main-gray);
+    border-radius: 5px;
+    padding: 20px;
+    padding-top: 0;
+    border-bottom: black solid 1px;
+    margin-bottom: 50px;
+    box-shadow: var(--main-color) 0px 0px 15px 0px;
+}
+
+
+.information-card {
+    display: flex;
+    gap: 1.5rem;
+    padding: 1.5rem;
+    background-color: #d0d0d0;
+    flex-direction: column;
+}
+
+
+.important-info {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    gap: 1rem;
+    background-color: #f1f1f1;
+    height: 100%;
+    border: 1px solid #ff1e00;
+}
+
+.card-header.inactive {
+    display: none;
+    flex-direction: column;
+}
+
+.card-header.active {
+    display: flex;
+    flex-direction: column;
+}
+
+.card-header-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 1rem;
+    padding-left: 0;
+}
+
+.card-header-title-row h1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.card-header-provider-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-header-provider-first-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-header-provider-last-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+
+.age-group {
+    color: green;
+    margin-left: 0.5rem;
+}
+
+.badge-icons-section {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
+    margin-left: auto;
+    background-color: var(--main-gray-light);
+    padding: 0.5rem;
+    border-radius: 50px;
+    border: var(--main-gray-darkest) 2px solid;
+}
+
+.departing-date {
+    display: inline;
+    font-weight: bold;
+    font-size: 0.8rem;
+    gap: 0.5rem;
+    color: orangered;
+}
+
+.card-header-specialties-row {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.specialty-button {
+    display: flex;
+    flex-grow: 1;
+    width: 50%;
+    background: linear-gradient(180deg, var(--main-gray-dark) 0%, var(--main-gray-darkest) 100%);
+    border: 1px var(--main-color) solid;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    padding: 5px 10px;
+    margin: 0;
+    gap: 0.5rem;
+    align-items: center;
+}
+
+.specialty-name {
+    flex-wrap: wrap;
+    color: rgb(253, 243, 243);
+    font-size: 1rem;
+    text-shadow: var(--main-gray-darkest) 1px 0 15px;
+}
+
+.gender-icon svg {
+    width: 2rem;
+    height: 2rem;
+}
+
+.location-group {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    width: 50%;
+    gap: 0.5rem;
+    padding: 1rem;
+    background-color: var(--main-gray-dark);
+    border: var(--main-color) 1px solid;
+}
+
+
+.common-visit-reasons-row {
+    display: flex;
+    margin-top: 0.8rem;
+    gap: 1rem;
+}
+
+.common-visit-reasons-paragraph {
+    flex: 1;
+    width: 50%;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: darkgreen;
+}
+
+.important-info-row {
+    margin-top: 0.8rem;
+    border: red 1px solid;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-weight: bold;
+    color: orangered;
+    background-color: var(--main-gray-darker)
+}
+
+.location-icon-text {
+    display: inline-block;
+}
+
+.provider-language-text {
+    color: green;
+    font-weight: bold;
+    margin-left: 1rem;
+}
+
+/* Submit Provider Page Styles */
+
+.form-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    background-color: var(--main-gray);
+    border: var(--main-color) 1px solid;
+    border-radius: 5px;
+    padding: 15%;
+}
+
+#import-preview {
+    height: auto;
+    display: flex;
+    overflow: scroll;
+}
+
+.provider-table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 3rem;
+}
+
+.provider-table th,
+.provider-table td {
+    padding: 0.5rem;
+    border: 1px solid black;
+}
+
+.provider-table th {
+    text-align: left;
+    background-color: var(--main-gray-darker);
+}
+
+.provider-table tr:nth-child(even) {
+    background-color: var(--main-gray-light);
+}
+
+.provider-table caption {
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: bold;
+    background-color: var(--main-color);
+    color: var(--main-gray-lightest);
+    padding: 0.5rem;
+}
+
+.provider-table-row-cell-compatible {
+    color: green;
+
+}
+
+.provider-table-row-cell-non-compatible {
+    color: red;
+
+}
+
+.calendar.active {
+    display: block;
+    margin: 1rem;
+}
+
+.calendar {
+    display: none;
+}
+
+.card-body {
+    display: none;
+    flex-direction: column;
+}
+
+.card-body.active {
+    display: flex;
+    flex-direction: row;
+    gap: 1.5rem;
+    margin: 1rem 0;
+}
+
+.available {
+    background-color: var(--main-gray-darker);
+    color: var(--main-gray-lightest);
+    font-weight: bold;
+    padding: 0.5rem;
+    border-radius: 5px;
+}

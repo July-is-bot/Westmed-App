@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Provider Search</title>
+	<link rel="stylesheet" href="style-reworked.css">
+	<script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.6/index.global.min.js'></script>
+</head>
+
+<body>
+	<header>
+		<h1 class="page-title">Provider Search</h1>
+	</header>
+	<main>
+		<form id="search-form">
+			<label action="#" for="search-query">Search:</label>
+			<input type="text" id="search-query" name="search-query">
+
+			<span class="form-dropdown-wrap">
+				<label for="specialty">Specialty:</label>
+				<input list="specialty-list" id="specialty" name="specialty">
+				<datalist id="specialty-list">
+					<option value="">All Specialties</option>
+					<option value="internalmedicine">Internal Medicine</option>
+					<option value="gastroenterology">Gastroenterology</option>
+					<option value="allergy">Allergy</option>
+					<option value="neurology">Neurology</option>
+					<option value="podiatry">Podiatry</option>
+					<option value="pulmonology">Pulmonology</option>
+					<option value="physicaltherapy">Physical Therapy</option>
+					<option value="endocrinology">Endocrinology</option>
+					<option value="rheumatology">Rheumatology</option>
+					<option value="cardiology">Cardiology</option>
+					<option value="dermatology">Dermatology</option>
+					<option value="nephrology">Nephrology</option>
+					<option value="vascular">Vascular</option>
+					<option value="oncology">Oncology</option>
+					<option value="weightmanagement">Weight Management</option>
+					<option value="chiropractics">Chiropractics</option>
+				</datalist>
+			</span>
+
+			<span class="form-dropdown-wrap">
+				<label for="title">Title:</label>
+				<select id="title" name="title">
+					<option value="">All Titles</option>
+					<option value="DR">DR</option>
+					<option value="NP">NP</option>
+				</select>
+			</span>
+
+			<span class="form-dropdown-wrap">
+				<label for="gender">Gender:</label>
+				<select id="gender" name="gender">
+					<option value="">All Genders</option>
+					<option value="female">Female</option>
+					<option value="male">Male</option>
+				</select>
+			</span>
+
+			<span class="form-dropdown-wrap">
+				<label for="location">Location:</label>
+				<select id="location" name="location">
+					<option value="">All Locations</option>
+					<option value="rye">Rye 1 Theall Road</option>
+					<option value="whiteplains">White Plains 210 Westchester Ave</option>
+					<option value="purchase">Purchase 3030 Westchester Ave</option>
+					<option value="yonkersbt">
+						<bold>Yonkers</bold> Boyce Thompson 1084 North Broadway
+					</option>
+					<option value="yonkersrh">Yonkers Ridge Hill 73 Market Street</option>
+					<option value="newrochelle">New Rochelle 171 Huguenot Street</option>
+				</select>
+			</span>
+
+			<span class="form-dropdown-wrap">
+				<label for="insurance">Insurances:</label>
+				<select id="insurance" name="insurance">
+					<option value="">All Insurances</option>
+					<option value="Medicare">Medicare</option>
+					<option value="Aetna">Aetna</option>
+					<option value="BCBS">Blue Cross Blue Shield</option>
+					<option value="Cigna">Cigna</option>
+					<option value="United Health Care">United Health Care</option>
+					<option value="Empire Plan">Empire Plan</option>
+				</select>
+			</span>
+
+			<span class="form-dropdown-wrap">
+				<label for="languages">Language:</label>
+				<select id="languages" name="languages">
+					<option value="">All Languages</option>
+					<option value="spanish">Spanish</option>
+					<option value="french">French</option>
+					<option value="cantonese">Cantonese</option>
+					<option value="chinese">Chinese</option>
+					<option value="gujarati">Gujarati</option>
+					<option value="hebrew">Hebrew</option>
+					<option value="hindi">Hindi</option>
+					<option value="malayalam">Malayalam</option>
+				</select>
+			</span>
+			
+			<span class="form-checkbox-wrap">
+				<input type="checkbox" id="accepts-new-patients" name="accepts-new-patients">
+				<label for="accepts-new-patients">Show Only Accepting New Patients</label>
+			</span>
+
+			<!-- <button type="submit" onclick="runSearch(event)">Search</button> -->
+			<button type="submit">Search</button>
+		</form>
+
+		<section id="search-results">
+			<!-- Provider search results will be displayed here -->
+		</section>
+	</main>
+	<footer>
+		<p>&copy; 2023 Julio Cesar Correa Vasquez</p>
+	</footer>
+	<script type="module" src="script-reworked.js"></script>
+	<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.9/xlsx.full.min.js"></script> -->
+</body>
+
+</html>
